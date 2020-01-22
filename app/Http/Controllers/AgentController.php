@@ -11,8 +11,8 @@ use Illuminate\Support\Facades\Hash;
 class AgentController extends Controller
 {
     public static function data(){
-        $DEFAULT_URL = 'https://wasalni-225100.firebaseio.com/';
-        $DEFAULT_TOKEN = 'xLUBPXPGMt1oOs4RD0AH72riFfdewYnmqPteB26z';
+        $DEFAULT_URL = 'https://taxi-c503a.firebaseio.com/';
+        $DEFAULT_TOKEN = 'QJsf6NkBs2bCRrN15pkt7TI5NK8p4trQXnFOGjxq';
         $DEFAULT_PATH = '/Governorates';
         $firebase = new \Firebase\FirebaseLib($DEFAULT_URL, $DEFAULT_TOKEN);
 

@@ -9,8 +9,8 @@ class DriverController extends Controller
 {
     public static function trips(){
         $user = auth()->user();
-        $DEFAULT_URL = 'https://wasalni-225100.firebaseio.com/';
-        $DEFAULT_TOKEN = 'xLUBPXPGMt1oOs4RD0AH72riFfdewYnmqPteB26z';
+        $DEFAULT_URL = 'https://taxi-c503a.firebaseio.com/';
+        $DEFAULT_TOKEN = 'QJsf6NkBs2bCRrN15pkt7TI5NK8p4trQXnFOGjxq';
         $DEFAULT_PATH = '/TripsHistory';
         $firebase = new \Firebase\FirebaseLib($DEFAULT_URL, $DEFAULT_TOKEN);
 
@@ -20,8 +20,8 @@ class DriverController extends Controller
     }
 
     public static function data(){
-        $DEFAULT_URL = 'https://wasalni-225100.firebaseio.com/';
-        $DEFAULT_TOKEN = 'xLUBPXPGMt1oOs4RD0AH72riFfdewYnmqPteB26z';
+        $DEFAULT_URL = 'https://taxi-c503a.firebaseio.com/';
+        $DEFAULT_TOKEN = 'QJsf6NkBs2bCRrN15pkt7TI5NK8p4trQXnFOGjxq';
         $DEFAULT_PATH = '/Governorates';
         $firebase = new \Firebase\FirebaseLib($DEFAULT_URL, $DEFAULT_TOKEN);
 
@@ -32,8 +32,8 @@ class DriverController extends Controller
     }
 
     public static function drivers(){
-        $DEFAULT_URL = 'https://wasalni-225100.firebaseio.com/';
-        $DEFAULT_TOKEN = 'xLUBPXPGMt1oOs4RD0AH72riFfdewYnmqPteB26z';
+        $DEFAULT_URL = 'https://taxi-c503a.firebaseio.com/';
+        $DEFAULT_TOKEN = 'QJsf6NkBs2bCRrN15pkt7TI5NK8p4trQXnFOGjxq';
         $DEFAULT_PATH = '/DriversInformation';
         $firebase = new \Firebase\FirebaseLib($DEFAULT_URL, $DEFAULT_TOKEN);
 
@@ -92,8 +92,8 @@ class DriverController extends Controller
             return redirect()->back();
         }
         $key = $request->key;
-        $DEFAULT_URL = 'https://wasalni-225100.firebaseio.com/';
-        $DEFAULT_TOKEN = 'xLUBPXPGMt1oOs4RD0AH72riFfdewYnmqPteB26z';
+        $DEFAULT_URL = 'https://taxi-c503a.firebaseio.com/';
+        $DEFAULT_TOKEN = 'QJsf6NkBs2bCRrN15pkt7TI5NK8p4trQXnFOGjxq';
         $DEFAULT_PATH = '/DriversInformation/'.$request->phone;
         $firebase = new \Firebase\FirebaseLib($DEFAULT_URL, $DEFAULT_TOKEN);
         $image = "";
@@ -130,8 +130,8 @@ class DriverController extends Controller
             session()->flash('success', 'Sorry you do not have this permission.');
             return redirect()->back();
         }
-        $DEFAULT_URL = 'https://wasalni-225100.firebaseio.com/';
-        $DEFAULT_TOKEN = 'xLUBPXPGMt1oOs4RD0AH72riFfdewYnmqPteB26z';
+        $DEFAULT_URL = 'https://taxi-c503a.firebaseio.com/';
+        $DEFAULT_TOKEN = 'QJsf6NkBs2bCRrN15pkt7TI5NK8p4trQXnFOGjxq';
         $DEFAULT_PATH = '/DriversInformation';
         $firebase = new \Firebase\FirebaseLib($DEFAULT_URL, $DEFAULT_TOKEN);
         $firebase->delete($DEFAULT_PATH.'/'.$key);
@@ -179,8 +179,8 @@ class DriverController extends Controller
             return redirect()->back();
         }
         $key = $request->key;
-        $DEFAULT_URL = 'https://wasalni-225100.firebaseio.com/';
-        $DEFAULT_TOKEN = 'xLUBPXPGMt1oOs4RD0AH72riFfdewYnmqPteB26z';
+        $DEFAULT_URL = 'https://taxi-c503a.firebaseio.com/';
+        $DEFAULT_TOKEN = 'QJsf6NkBs2bCRrN15pkt7TI5NK8p4trQXnFOGjxq';
         $DEFAULT_PATH = '/DriversInformation';
         $image = "";
         if (!empty($request->driver_image)) {
@@ -238,8 +238,8 @@ class DriverController extends Controller
             return redirect()->back();
         }
         $key = $request->key;
-        $DEFAULT_URL = 'https://wasalni-225100.firebaseio.com/';
-        $DEFAULT_TOKEN = 'xLUBPXPGMt1oOs4RD0AH72riFfdewYnmqPteB26z';
+        $DEFAULT_URL = 'https://taxi-c503a.firebaseio.com/';
+        $DEFAULT_TOKEN = 'QJsf6NkBs2bCRrN15pkt7TI5NK8p4trQXnFOGjxq';
         $DEFAULT_PATH = '/DriversInformation';
         $firebase = new \Firebase\FirebaseLib($DEFAULT_URL, $DEFAULT_TOKEN);
         $data = [
@@ -256,8 +256,8 @@ class DriverController extends Controller
             session()->flash('success', 'Sorry you do not have this permission.');
             return redirect()->back();
         }
-        $DEFAULT_URL = 'https://wasalni-225100.firebaseio.com/';
-        $DEFAULT_TOKEN = 'xLUBPXPGMt1oOs4RD0AH72riFfdewYnmqPteB26z';
+        $DEFAULT_URL = 'https://taxi-c503a.firebaseio.com/';
+        $DEFAULT_TOKEN = 'QJsf6NkBs2bCRrN15pkt7TI5NK8p4trQXnFOGjxq';
         $DEFAULT_PATH = '/DriversInformation';
         $firebase = new \Firebase\FirebaseLib($DEFAULT_URL, $DEFAULT_TOKEN);
         $earnings = $this->earnings($key);

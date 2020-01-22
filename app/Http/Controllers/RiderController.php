@@ -7,8 +7,8 @@ use Illuminate\Http\Request;
 class RiderController extends Controller
 {
     public static function data(){
-        $DEFAULT_URL = 'https://wasalni-225100.firebaseio.com/';
-        $DEFAULT_TOKEN = 'xLUBPXPGMt1oOs4RD0AH72riFfdewYnmqPteB26z';
+        $DEFAULT_URL = 'https://taxi-c503a.firebaseio.com/';
+        $DEFAULT_TOKEN = 'QJsf6NkBs2bCRrN15pkt7TI5NK8p4trQXnFOGjxq';
         $DEFAULT_PATH = '/RidersInformation';
         $firebase = new \Firebase\FirebaseLib($DEFAULT_URL, $DEFAULT_TOKEN);
 
@@ -25,8 +25,8 @@ class RiderController extends Controller
             session()->flash('success', 'Sorry you do not have this permission.');
             return redirect()->back();
         }
-        $DEFAULT_URL = 'https://wasalni-225100.firebaseio.com/';
-        $DEFAULT_TOKEN = 'xLUBPXPGMt1oOs4RD0AH72riFfdewYnmqPteB26z';
+        $DEFAULT_URL = 'https://taxi-c503a.firebaseio.com/';
+        $DEFAULT_TOKEN = 'QJsf6NkBs2bCRrN15pkt7TI5NK8p4trQXnFOGjxq';
         $DEFAULT_PATH = '/RidersInformation';
         $firebase = new \Firebase\FirebaseLib($DEFAULT_URL, $DEFAULT_TOKEN);
 
@@ -57,8 +57,8 @@ class RiderController extends Controller
             return redirect()->back();
         }
         $key = $request->key;
-        $DEFAULT_URL = 'https://wasalni-225100.firebaseio.com/';
-        $DEFAULT_TOKEN = 'xLUBPXPGMt1oOs4RD0AH72riFfdewYnmqPteB26z';
+        $DEFAULT_URL = 'https://taxi-c503a.firebaseio.com/';
+        $DEFAULT_TOKEN = 'QJsf6NkBs2bCRrN15pkt7TI5NK8p4trQXnFOGjxq';
         $DEFAULT_PATH = '/RidersInformation/'.$request->phone;
         $firebase = new \Firebase\FirebaseLib($DEFAULT_URL, $DEFAULT_TOKEN);
         $data = [
@@ -78,8 +78,8 @@ class RiderController extends Controller
             return redirect()->back();
         }
         $key = $request->key;
-        $DEFAULT_URL = 'https://wasalni-225100.firebaseio.com/';
-        $DEFAULT_TOKEN = 'xLUBPXPGMt1oOs4RD0AH72riFfdewYnmqPteB26z';
+        $DEFAULT_URL = 'https://taxi-c503a.firebaseio.com/';
+        $DEFAULT_TOKEN = 'QJsf6NkBs2bCRrN15pkt7TI5NK8p4trQXnFOGjxq';
         $DEFAULT_PATH = '/RidersInformation';
         $firebase = new \Firebase\FirebaseLib($DEFAULT_URL, $DEFAULT_TOKEN);
         $firebase->delete($DEFAULT_PATH.'/'.$key);
@@ -89,8 +89,8 @@ class RiderController extends Controller
     public function rider(Request $request)
     {
         $key = $request->key;
-        $DEFAULT_URL = 'https://wasalni-225100.firebaseio.com/';
-        $DEFAULT_TOKEN = 'xLUBPXPGMt1oOs4RD0AH72riFfdewYnmqPteB26z';
+        $DEFAULT_URL = 'https://taxi-c503a.firebaseio.com/';
+        $DEFAULT_TOKEN = 'QJsf6NkBs2bCRrN15pkt7TI5NK8p4trQXnFOGjxq';
         $DEFAULT_PATH = '/RidersInformation';
         $firebase = new \Firebase\FirebaseLib($DEFAULT_URL, $DEFAULT_TOKEN);
         $drivers = $firebase->get($DEFAULT_PATH.'/'.$key);
@@ -106,8 +106,8 @@ class RiderController extends Controller
             return redirect()->back();
         }
         $key = $request->key;
-        $DEFAULT_URL = 'https://wasalni-225100.firebaseio.com/';
-        $DEFAULT_TOKEN = 'xLUBPXPGMt1oOs4RD0AH72riFfdewYnmqPteB26z';
+        $DEFAULT_URL = 'https://taxi-c503a.firebaseio.com/';
+        $DEFAULT_TOKEN = 'QJsf6NkBs2bCRrN15pkt7TI5NK8p4trQXnFOGjxq';
         $DEFAULT_PATH = '/RidersInformation';
         $firebase = new \Firebase\FirebaseLib($DEFAULT_URL, $DEFAULT_TOKEN);
         $data = [
@@ -130,8 +130,8 @@ class RiderController extends Controller
             session()->flash('success', 'Sorry you do not have this permission.');
             return redirect()->back();
         }
-        $DEFAULT_URL = 'https://wasalni-225100.firebaseio.com/';
-        $DEFAULT_TOKEN = 'xLUBPXPGMt1oOs4RD0AH72riFfdewYnmqPteB26z';
+        $DEFAULT_URL = 'https://taxi-c503a.firebaseio.com/';
+        $DEFAULT_TOKEN = 'QJsf6NkBs2bCRrN15pkt7TI5NK8p4trQXnFOGjxq';
         $DEFAULT_PATH = '/RidersInformation';
         $firebase = new \Firebase\FirebaseLib($DEFAULT_URL, $DEFAULT_TOKEN);
         // $earnings = $this->earnings($key);

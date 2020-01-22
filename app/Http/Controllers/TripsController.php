@@ -28,8 +28,8 @@ class TripsController extends Controller
     public function show(Request $request)
     {
         $user = auth()->user();
-        $DEFAULT_URL = 'https://wasalni-225100.firebaseio.com/';
-        $DEFAULT_TOKEN = 'xLUBPXPGMt1oOs4RD0AH72riFfdewYnmqPteB26z';
+        $DEFAULT_URL = 'https://taxi-c503a.firebaseio.com/';
+        $DEFAULT_TOKEN = 'QJsf6NkBs2bCRrN15pkt7TI5NK8p4trQXnFOGjxq';
         $DEFAULT_PATH = '/TripsHistory';
         $firebase = new \Firebase\FirebaseLib($DEFAULT_URL, $DEFAULT_TOKEN);
 
@@ -41,8 +41,8 @@ class TripsController extends Controller
     public function update(Request $request)
     {
         $key = $request->key;
-        $DEFAULT_URL = 'https://wasalni-225100.firebaseio.com/';
-        $DEFAULT_TOKEN = 'xLUBPXPGMt1oOs4RD0AH72riFfdewYnmqPteB26z';
+        $DEFAULT_URL = 'https://taxi-c503a.firebaseio.com/';
+        $DEFAULT_TOKEN = 'QJsf6NkBs2bCRrN15pkt7TI5NK8p4trQXnFOGjxq';
         $DEFAULT_PATH = '/TripsHistory';
         $firebase = new \Firebase\FirebaseLib($DEFAULT_URL, $DEFAULT_TOKEN);
         $data = [
