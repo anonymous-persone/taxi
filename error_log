@@ -1,0 +1,2 @@
+[01-Aug-2019 19:12:05 UTC] PHP Fatal error:  Class 'App\Http\Middleware\Middleware' not found in /home/gxtzrpv6yvby/public_html/app/Http/Middleware/SetLocale.php on line 7
+[02-Aug-2019 02:32:54 UTC] PHP Fatal error:  Declaration of App\User::can($slug) must be compatible with Illuminate\Foundation\Auth\User::can($ability, $arguments = Array) in /home/gxtzrpv6yvby/public_html/app/User.php on line 9
