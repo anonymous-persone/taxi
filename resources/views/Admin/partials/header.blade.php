@@ -6,7 +6,7 @@
 					<i class="feather icon-toggle-right"></i>
 				</a>
 			<a href="{{route('drivers')}}">
-					<img width="70" class="img-fluid" src="{{ @asset('/assets/admin/images/logo.png') }}" alt="{{ config('app.name') }}" />
+					<img width="70" class="img-fluid" src="{{ asset('/assets/admin/images/mylogo.png') }}" alt="{{ config('app.name') }}" />
 				</a>
 			<a class="mobile-options waves-effect waves-light">
 					<i class="feather icon-more-horizontal"></i>
