@@ -79,5 +79,11 @@ Route::group(['middleware' => ['auth', 'setlocale']], function(){
 	Route::post('trip/update', 'TripsController@update')->name('trip.update');
 	Route::post('trip/show/', 'TripsController@show')->name('trip.get');
 
+	Route::get('prices', 'SettingsController@prices')->name('prices.index');
+	Route::post('prices', 'SettingsController@updatePrices')->name('prices.update');
+	Route::get('cards', 'SettingsController@cards')->name('cards.index');
+	Route::get('cards/add', 'SettingsController@addCards')->name('cards.add');
+	Route::post('cards', 'SettingsController@storeCards')->name('cards.create');
+
 	Route::get('change-language/{lang}', 'DashboardController@language')->name('change-language');
 });

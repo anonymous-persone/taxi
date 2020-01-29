@@ -113,7 +113,7 @@
                 </a>
                 <ul class="pcoded-submenu">
                     @if($user->able(9))
-                        <li @if('settings' == request()->segment(1)) class="active" @endif>
+                        <li @if('Home Settings' == request()->segment(1)) class="active" @endif>
                             <a href="{{route('settings')}}" class="waves-effect waves-dark">
                                 <span class="pcoded-mtext">{{__('Site Settings')}}</span>
                             </a>
@@ -137,6 +137,35 @@
                         <li @if('screens' == request()->segment(1)) class="active" @endif>
                             <a href="{{route('screens')}}" class="waves-effect waves-dark">
                                 <span class="pcoded-mtext">{{__('Screens')}}</span>
+                            </a>
+                        </li>
+                    @endif
+                </ul>
+			</li>
+			<li class="pcoded-hasmenu @if('prices' == request()->segment(1) || 'cards' == request()->segment(1)) active pcoded-trigger @endif">
+                <a href="javascript:void(0)" class="waves-effect waves-dark">
+                    <span class="pcoded-micon"><i class="feather icon-users"></i></span>
+                    <span class="pcoded-mtext">{{__('Settings')}}</span>
+                </a>
+                <ul class="pcoded-submenu">
+                    @if($user->able(23))
+                        <li @if('prices' == request()->segment(1)) class="active" @endif>
+                            <a href="{{route('prices.index')}}" class="waves-effect waves-dark">
+                                <span class="pcoded-mtext">{{__('Price Settings')}}</span>
+                            </a>
+                        </li>
+                    @endif
+                    @if($user->able(23))
+                        <li @if('cards' == request()->segment(1)) class="active" @endif>
+                            <a href="{{route('cards.index')}}" class="waves-effect waves-dark">
+                                <span class="pcoded-mtext">{{__('All cards')}}</span>
+                            </a>
+                        </li>
+					@endif
+					@if($user->able(23))
+                        <li @if('cards' == request()->segment(1) && 'new' == request()->segment(2)) class="active" @endif>
+                            <a href="{{route('cards.add')}}" class="waves-effect waves-dark">
+                                <span class="pcoded-mtext">{{__('Add cards')}}</span>
                             </a>
                         </li>
                     @endif
