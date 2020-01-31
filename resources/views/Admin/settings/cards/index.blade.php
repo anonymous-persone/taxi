@@ -61,6 +61,13 @@
 </div>
 @endsection
 @section('page_body')
+@if(isset($allNumbers))
+    <form id="exportform" action="{{route('cards.export')}}" method="post">
+        @csrf
+        <input type="hidden" id="allNumbers">    
+    </form>
+@endif
+
 <div class="row">
 	<div class="col-md-12">
         <div class="card table-card latest-activity-card">
@@ -81,11 +88,12 @@
                             {{-- <th>{{__('Actions')}}</th> --}}
                         </thead>
                         <tbody class="border-checkbox-section">
+                            @if( isset($cards) && !empty($cards) )
                             @foreach($cards as $key => $card)
                                 <tr>
                                     
                                     <td>{{$card->cardNumber}}</td>
-                                    <td>{{($card->redeemedBy)}}</td>
+                                    <td>{{$card->redeemedBy}}</td>
                                     <td>{{($card->value)}}</td>
                                     {{-- <td>
                                         @if ($user->able(18))
@@ -97,14 +105,13 @@
                                     </td> --}}
                                 </tr>
                             @endforeach
+                            @endif
                         </tbody>
                     </table>
                 </div>
             </div>
             <div class="card-footer">
-				
-                <nav class="float-right">
-                </nav>
+                {{-- {allNumbers:{{$allNumbers}}} --}}
             </div>
         </div>
     </div>
@@ -166,4 +173,5 @@
             toastr.success("{{$success}}");
         @endif
     </script>
+
 @endsection

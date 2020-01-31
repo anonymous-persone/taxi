@@ -3,7 +3,7 @@
 	<div class="pcoded-inner-navbar main-menu">
 		<div class="">
 			<div class="main-menu-header">
-				<img class="img-menu-user img-radius" src="{{ @url('/storage/') }}" alt="">
+				{{-- <img class="img-menu-user img-radius" src="{{ @url('/storage/') }}" alt=""> --}}
 				<div class="user-details">
 					<p id="more-details"></p>
 				</div>

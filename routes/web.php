@@ -65,6 +65,8 @@ Route::group(['middleware' => ['auth', 'setlocale']], function(){
 	Route::post('admin/delete/{id}', 'AdminController@delete')->name('admin.delete');
 	Route::post('admin', 'AdminController@findAdmin')->name('admin.get');
 	Route::post('admin/update', 'AdminController@update')->name('admin.update');
+	Route::get('admins/export', 'AdminController@export');
+
 
 	Route::get('agents', 'AgentController@agents')->name('agents');
 	Route::get('agents/new', 'AgentController@addAgent')->name('agents.new');
@@ -81,9 +83,10 @@ Route::group(['middleware' => ['auth', 'setlocale']], function(){
 
 	Route::get('prices', 'SettingsController@prices')->name('prices.index');
 	Route::post('prices', 'SettingsController@updatePrices')->name('prices.update');
-	Route::get('cards', 'SettingsController@cards')->name('cards.index');
+	Route::get('/cards', 'SettingsController@cards')->name('cards.index');
 	Route::get('cards/add', 'SettingsController@addCards')->name('cards.add');
 	Route::post('cards', 'SettingsController@storeCards')->name('cards.create');
+	Route::POST('cards/export', 'SettingsController@exportCards')->name('cards.export');
 
 	Route::get('change-language/{lang}', 'DashboardController@language')->name('change-language');
 });

@@ -4,8 +4,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Exports\CardsExport;
+use Maatwebsite\Excel\Facades\Excel;
+
+
 class SettingsController extends Controller
 {
+    
     public function prices(){
         $user = auth()->user();
         if (!$user->able(1)) {
@@ -36,25 +41,27 @@ class SettingsController extends Controller
         $DEFAULT_PATH = '/SystemSettings';
         $firebase = new \Firebase\FirebaseLib($DEFAULT_URL, $DEFAULT_TOKEN);
         $data = [
-            "commissionPercentage" => $request->commissionPercentage,
-            "initialTripCost" => $request->initialTripCost,
-            "tripPerMeterCost"=> $request->tripPerMeterCost,
-            "tripPerSecondCost"=> $request->tripPerSecondCost,
+            "commissionPercentage" => (float) $request->commissionPercentage,
+            "initialTripCost" => (float) $request->initialTripCost,
+            "tripPerMeterCost"=> (float) $request->tripPerMeterCost,
+            "tripPerSecondCost"=> (float) $request->tripPerSecondCost,
         ];
         try{
             $firebase->update($DEFAULT_PATH, $data);
-            return redirect()->back()->with('success', 'Driver updated successfully');
+            return redirect()->back()->with('success', 'Prices updated successfully');
         }catch(Exception $e){
             echo $e->getMessage();   // insert query
-        }
+        }        
     }
 
-    public function cards(){
+    public function cards(Request $request){
+
         $user = auth()->user();
         if (!$user->able(1)) {
             session()->flash('success', 'Sorry you do not have this permission.');
             return redirect()->back();
         }
+
         $DEFAULT_URL = 'https://taxi-c503a.firebaseio.com/';
         $DEFAULT_TOKEN = 'QJsf6NkBs2bCRrN15pkt7TI5NK8p4trQXnFOGjxq';
         $DEFAULT_PATH = '/PrepaidCommissionCards';
@@ -63,7 +70,12 @@ class SettingsController extends Controller
         $cards = $firebase->get($DEFAULT_PATH);
         $cards = json_decode($cards);
         $title = "System Cards";
-
+        
+        if($request->session()->exists('allNumbers')){
+            $allNumbers = $request->session()->get('allNumbers');
+            // $export = new CardsExport($allNumbers);
+            return view('Admin.settings.cards.index', compact('cards','user','title','allNumbers'));
+        }
         return view('Admin.settings.cards.index', compact('cards','user','title'));
     }
 
@@ -76,9 +88,11 @@ class SettingsController extends Controller
         return view('Admin.settings.cards.add', compact('user', 'cities'));
     }
 
+    //     return Excel::download(new CardsExport, 'cards.xlsx');
+
     public function storeCards(Request $request){
 
-        $characters = '0123456789abcdefghijklmnopqrstuvwxyz';
+        $characters = '123456789abcdefghijklmnopqrstuvwxyz';
         $charactersLength = strlen($characters);
         $cardsQuantity = $request->quantity;
         $random_number='';
@@ -92,17 +106,63 @@ class SettingsController extends Controller
                 $random_number .= $characters[rand(0, $charactersLength - 1)];;
                 $count++;
             }
-            if(array_search($random_number,$allNumbers)){
+            // echo'<pre>';
+            // echo 'Random Number: '. $random_number; echo'<br>';
+            // echo 'All Numbers: '; print_r($allNumbers);
+            // echo 'Array Search: '. array_search($random_number, array_column($allNumbers, 'Card Number'),true);
+            // echo'<hr>';
+            if(array_search($random_number, array_column($allNumbers, 'Card Number')) !== false ){
                 $random_number='';
                 $count=0;
                 goto loop;
             }
+            $random_number = ['Card Number' => $random_number];
             array_push($allNumbers, $random_number);
             $random_number='';
             $count=0;
         }
-        echo'<pre>';
-        var_dump($allNumbers);
+
+        $user = auth()->user();
+        $DEFAULT_URL = 'https://taxi-c503a.firebaseio.com/';
+        $DEFAULT_TOKEN = 'QJsf6NkBs2bCRrN15pkt7TI5NK8p4trQXnFOGjxq';
+        $DEFAULT_PATH = '/PrepaidCommissionCards';
+        $firebase = new \Firebase\FirebaseLib($DEFAULT_URL, $DEFAULT_TOKEN);
+
+        $cardValue = $request->value;
+        // dd($allNumbers);
+        // dd($request);
+        try {
+
+            foreach ($allNumbers as $key => $number) {
+                
+                $data = [
+                    "cardNumber" => $number['Card Number'],
+                    "redeemedBy" => '',
+                    "value" => $cardValue,
+                ];
+                $firebase->push($DEFAULT_PATH, $data);
+            }
+            // if ($user->is_agent){
+            //     $log = new Log;
+            //     $log->agent = $user->name;
+            //     $log->action = "Added new $cardsQuantity Card Numbers of $request->value";
+            //     $log->save();
+            // }
+        }
+        catch (\Exception $th) {
+            echo $th->getMessage();
+        }
+        // session()->now('success', 'Cards created successfully');
+        // redirect()->route('cards.index');
+        $export = new CardsExport($allNumbers);
+        return Excel::download($export, 'cards-'.time().'.xlsx');
+        // return redirect()->route('cards.index')->with('allNumbers', $allNumbers);
+
+    }
+
+    public function exportCards(Request $request){
+        $export = new CardsExport(json_decode($request->allNumbers,true));
+        return Excel::download($export, 'cards-'.time().'.xlsx');
     }
 
 }
