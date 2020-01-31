@@ -85,7 +85,7 @@ class SettingsController extends Controller
             session()->flash('success', 'Sorry you do not have this permission.');
             return redirect()->back();
         }
-        return view('Admin.settings.cards.add', compact('user', 'cities'));
+        return view('Admin.settings.cards.add', compact('user'));
     }
 
     //     return Excel::download(new CardsExport, 'cards.xlsx');
@@ -153,7 +153,7 @@ class SettingsController extends Controller
             echo $th->getMessage();
         }
         // session()->now('success', 'Cards created successfully');
-        // redirect()->route('cards.index');
+        
         $export = new CardsExport($allNumbers);
         return Excel::download($export, 'cards-'.time().'.xlsx');
         // return redirect()->route('cards.index')->with('allNumbers', $allNumbers);
