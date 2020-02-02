@@ -27,6 +27,7 @@ class CardsExport implements FromCollection, WithHeadings
     {
         return [
             'Card Numbers',
+            'Value'
         ];
     }
 }

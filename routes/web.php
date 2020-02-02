@@ -86,7 +86,7 @@ Route::group(['middleware' => ['auth', 'setlocale']], function(){
 	Route::get('/cards', 'SettingsController@cards')->name('cards.index');
 	Route::get('cards/add', 'SettingsController@addCards')->name('cards.add');
 	Route::post('cards', 'SettingsController@storeCards')->name('cards.create');
-	Route::POST('cards/export', 'SettingsController@exportCards')->name('cards.export');
+	// Route::POST('cards/export', 'SettingsController@exportCards')->name('cards.export');
 
 	Route::get('change-language/{lang}', 'DashboardController@language')->name('change-language');
 });

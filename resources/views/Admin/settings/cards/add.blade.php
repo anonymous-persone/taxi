@@ -82,7 +82,7 @@
         swal({
             title: "{{__('Download starts in a few seconds')}}",
             type: "success",
-            timer:3000,
+            timer:4000,
         });
         $('#pageForm').submit(function(){
             $('#quantity').attr('value', $('#quantity').text());

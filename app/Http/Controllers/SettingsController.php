@@ -95,6 +95,7 @@ class SettingsController extends Controller
         $characters = '123456789abcdefghijklmnopqrstuvwxyz';
         $charactersLength = strlen($characters);
         $cardsQuantity = $request->quantity;
+        $cardValue = $request->value;
         $random_number='';
         $count=0;
         $allNumbers = [];
@@ -116,7 +117,7 @@ class SettingsController extends Controller
                 $count=0;
                 goto loop;
             }
-            $random_number = ['Card Number' => $random_number];
+            $random_number = ['Card Number' => $random_number, 'Value' => $cardValue ];
             array_push($allNumbers, $random_number);
             $random_number='';
             $count=0;
@@ -127,8 +128,7 @@ class SettingsController extends Controller
         $DEFAULT_TOKEN = 'QJsf6NkBs2bCRrN15pkt7TI5NK8p4trQXnFOGjxq';
         $DEFAULT_PATH = '/PrepaidCommissionCards';
         $firebase = new \Firebase\FirebaseLib($DEFAULT_URL, $DEFAULT_TOKEN);
-
-        $cardValue = $request->value;
+        
         // dd($allNumbers);
         // dd($request);
         try {
