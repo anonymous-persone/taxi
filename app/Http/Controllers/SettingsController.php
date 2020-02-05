@@ -137,8 +137,7 @@ class SettingsController extends Controller
                 
                 $data = [
                     "cardNumber" => $number['Card Number'],
-                    "redeemedBy" => '',
-                    "value" => $cardValue,
+                    "value" => (float) $cardValue,
                 ];
                 $firebase->push($DEFAULT_PATH, $data);
             }
@@ -158,11 +157,6 @@ class SettingsController extends Controller
         return Excel::download($export, 'cards-'.time().'.xlsx');
         // return redirect()->route('cards.index')->with('allNumbers', $allNumbers);
 
-    }
-
-    public function exportCards(Request $request){
-        $export = new CardsExport(json_decode($request->allNumbers,true));
-        return Excel::download($export, 'cards-'.time().'.xlsx');
     }
 
 }
