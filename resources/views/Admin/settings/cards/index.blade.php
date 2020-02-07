@@ -93,7 +93,7 @@
                                 <tr>
                                     
                                     <td>{{$card->cardNumber}}</td>
-                                    <td>{{$card->redeemedBy}}</td>
+                                    <td>@if( isset($card->redeemedBy)){{$card->redeemedBy}}@endif</td>
                                     <td>{{($card->value)}}</td>
                                     {{-- <td>
                                         @if ($user->able(18))
