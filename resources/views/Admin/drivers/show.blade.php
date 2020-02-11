@@ -414,7 +414,7 @@
                                             <i class="icofont icofont-users-alt-2 f-30 text-c-green"></i>
                                         </div>
                                         <div class="col-auto">
-                                            <h6 class="text-muted m-b-10">{{__('This year trips cost')}}</h6>
+                                            <h6 class="text-muted m-b-10">{{__('Last 12 months trips cost')}}</h6>
                                             <h2 class="m-b-0">{{$all = $earnings['year']}} {{__('EGP')}}</h2>
                                         </div>
                                     </div>

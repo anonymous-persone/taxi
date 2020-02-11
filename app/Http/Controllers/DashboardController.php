@@ -23,6 +23,7 @@ class DashboardController extends Controller
         $monthFormat = "m";
         $date1  = \DateTime::createFromFormat($format, $today);
         $dateMonth = \DateTime::createFromFormat($monthFormat, $today);
+        
         foreach ($drivers as $key => $driver) {
         	$date = trim(substr($driver['date'], strpos($driver['date'], ",") + 1));
         	$date2  = \DateTime::createFromFormat($format, $date);
@@ -40,7 +41,7 @@ class DashboardController extends Controller
         }
         // return redirect()->route('drivers');
         
-        return view('Admin.dashboard', compact('moneyToday','user'));
+        return view('Admin.dashboard', compact('moneyToday','moneyMonth','user'));
     }
 
     public function language($lang)

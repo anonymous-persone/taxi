@@ -27,7 +27,7 @@
                     </div>
                     <div class="col-auto">
                         <h6 class="text-muted m-b-10">This month trips cost</h6>
-                        <h2 class="m-b-0"></h2>
+                        <h2 class="m-b-0">{{$moneyMonth}} $</h2>
                     </div>
                 </div>
             </div>

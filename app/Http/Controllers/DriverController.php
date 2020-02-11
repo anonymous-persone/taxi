@@ -151,7 +151,7 @@ class DriverController extends Controller
         $ch = curl_init();
 
         // set url
-        curl_setopt($ch, CURLOPT_URL, "https://wasalni-225100.firebaseio.com/DriversInformation.json");
+        curl_setopt($ch, CURLOPT_URL, "https://taxi-c503a.firebaseio.com/DriversInformation.json");
 
         //return the transfer as a string
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
@@ -358,7 +358,7 @@ class DriverController extends Controller
         $ch = curl_init();
 
         // set url
-        curl_setopt($ch, CURLOPT_URL, "https://wasalni-225100.firebaseio.com/TripsHistory.json");
+        curl_setopt($ch, CURLOPT_URL, "https://taxi-c503a.firebaseio.com/TripsHistory.json");
 
         //return the transfer as a string
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
@@ -373,6 +373,7 @@ class DriverController extends Controller
         $today = date('j/n');
         $thisMonth = date('m');
         $thisYear = date('Y');
+
         $moneyToday = 0;
         $moneyMonth = 0;
         $moneyYear = 0;
@@ -438,14 +439,25 @@ class DriverController extends Controller
         foreach ($trips as $key => $driver) {
             if (isset($driver['driver'])) {
                 if ($driver['driver'] == $driverKey) {
+                    // $date = trim(substr($driver['date'], strpos($driver['date'], ",") + 1));
+                    // $date = trim(substr($driver['date'], strpos($driver['date'], "/") + 1));
+                    // $date = trim(substr($date, strpos($date, '/')+1));
+                    // $date = substr($date, 0, strpos($date, ','));
+
                     $date = trim(substr($driver['date'], strpos($driver['date'], ",") + 1));
-                    $date = trim(substr($driver['date'], strpos($driver['date'], "/") + 1));
-                    $date = trim(substr($date, strpos($date, '/')+1));
                     $date = substr($date, 0, strpos($date, ','));
+                    $dateEntered = \DateTime::createFromFormat('d/m/Y', $date);
+
                     // dd($date);
-                    $date2  = \DateTime::createFromFormat($monthFormat, $date);
-                    if ($date == $thisYear) {
-                        $moneyYear += trim(substr($driver['estimatedPayout'],0, strpos($driver['estimatedPayout'], " ") + 1));
+                    $todaysDate = new \DateTime();
+                    $maxBookingDate = new \DateTime('-1 year');
+                                        
+                    if ($dateEntered < $todaysDate && $dateEntered > $maxBookingDate) {
+                        try {
+                            $moneyYear += trim(substr($driver['estimatedPayout'],0, strpos($driver['estimatedPayout'], " ") + 1));
+                        } catch (\Throwable $th) {
+                            //throw $th;
+                        }
                         $cashYear += $driver['cashPaymentValue'] ?? 0;
                         if (isset($driver['walletPaymentValue'])){
                             $wVal = $driver['walletPaymentValue'];
