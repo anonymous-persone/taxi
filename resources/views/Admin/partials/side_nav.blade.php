@@ -62,7 +62,7 @@
                 </a>
             </li>
             @if(!$user->is_agent)
-			<li class="pcoded-hasmenu @if('admins' == request()->segment(1)) active pcoded-trigger @endif">
+			{{-- <li class="pcoded-hasmenu @if('admins' == request()->segment(1)) active pcoded-trigger @endif">
 				<a href="javascript:void(0)" class="waves-effect waves-dark">
 					<span class="pcoded-micon"><i class="feather icon-truck"></i></span>
 					<span class="pcoded-mtext">{{__('Admins')}}</span>
@@ -90,20 +90,16 @@
                         <span class="pcoded-mtext">{{__('Agents')}}</span>
                     </a>
                     <ul class="pcoded-submenu">
-                        {{--                    @if($user->able(22))--}}
                         <li @if('agents' == request()->segment(1)) class="active" @endif>
                             <a href="{{route('agents')}}" class="waves-effect waves-dark">
                                 <span class="pcoded-mtext">{{__('All Agents')}}</span>
                             </a>
                         </li>
-                        {{--                    @endif--}}
-                        {{--                    @if($user->able(23))--}}
                         <li @if('new' == request()->segment(2)) class="active" @endif>
                             <a href="{{route('agents.new')}}" class="waves-effect waves-dark">
                                 <span class="pcoded-mtext">{{__('Add Agent')}}</span>
                             </a>
                         </li>
-                        {{--                    @endif--}}
                     </ul>
             </li>
             <li class="pcoded-hasmenu @if('drivers' == request()->segment(2)) active pcoded-trigger @endif">
@@ -141,7 +137,7 @@
                         </li>
                     @endif
                 </ul>
-			</li>
+			</li> --}}
 			<li class="pcoded-hasmenu @if('prices' == request()->segment(1) || 'cards' == request()->segment(1)) active pcoded-trigger @endif">
                 <a href="javascript:void(0)" class="waves-effect waves-dark">
                     <span class="pcoded-micon"><i class="feather icon-users"></i></span>
@@ -171,12 +167,12 @@
                     @endif
                 </ul>
             </li>
-            <li class="@if('log' == request()->segment(2)) active pcoded-trigger @endif">
+            {{-- <li class="@if('log' == request()->segment(2)) active pcoded-trigger @endif">
                 <a href="{{route('log')}}" class="waves-effect waves-dark">
                     <span class="pcoded-micon"><i class="feather icon-loader"></i></span>
                     <span class="pcoded-mtext">{{__('Agents Log')}}</span>
                 </a>
-            </li>
+            </li> --}}
             @endif
 
 		</ul>

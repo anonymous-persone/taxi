@@ -108,7 +108,7 @@
                     <div class="row">
                         <div class="section-field col-md-12">
                             <div class="form-group">
-                                <label >{{__('Car Color')}}</label>
+                                <label >{{__('Taxi Color')}}</label>
                                 <input type="text" name="color" id="color" class="form-control" required>
                             </div>
                         </div>
@@ -116,7 +116,7 @@
                     <div class="row">
                         <div class="section-field col-md-12">
                             <div class="form-group">
-                                <label >{{__('Car Model')}}</label>
+                                <label >{{__('Taxi Model')}}</label>
                                 <input type="text" name="model" id="model" class="form-control" required>
                             </div>
                         </div>
@@ -124,7 +124,7 @@
                     <div class="row">
                         <div class="section-field col-md-12">
                             <div class="form-group">
-                                <label >{{__('Car Number')}}</label>
+                                <label >{{__('Taxi Number')}}</label>
                                 <input type="text" name="number" id="number" class="form-control" required>
                             </div>
                         </div>
@@ -132,7 +132,22 @@
                     <div class="row">
                         <div class="section-field col-md-12">
                             <div class="form-group">
-                                <label >{{__('Car Type')}}</label>
+                                <label >{{__('Wallet Balance')}}</label>
+                                <input type="number" name="wallet_balance" id="wallet_balance" class="form-control" readonly>
+                            </div>
+                        </div>
+                    </div><div class="row">
+                        <div class="section-field col-md-12">
+                            <div class="form-group">
+                                <label >{{__('Add to Wallet Balance : ')}}</label>
+                                <input type="number" name="wb_new" id="wb_new" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                    {{-- <div class="row">
+                        <div class="section-field col-md-12">
+                            <div class="form-group">
+                                <label >{{__('Taxi Type')}}</label>
                                 <select class="form-control" name="car_type" id="car_type">
                                     <option value="TokTok">Toktok</option>
                                     <option value="Malaki">Malaki</option>
@@ -140,8 +155,8 @@
                                 </select>
                             </div>
                         </div>
-                    </div>
-                    <div class="row">
+                    </div> --}}
+                    {{-- <div class="row">
                         <div class="section-field col-md-12">
                             <div class="form-group">
                                 <label >{{__('Last Payment')}}</label>
@@ -164,7 +179,7 @@
                                 <input type="date" class="form-control" id="last_payment_date" name="last_payment_date">
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
                 <div class="modal-footer">
                     <input id="communicationID" type="hidden" name="id" value="">
@@ -195,10 +210,10 @@
                             <th id="fname">{{__('First Name')}}</th>
                             <th id="lname">{{__('Last Name')}}</th>
                             <th id="image">{{__('Image')}}</th>
-                            <th id="car_number">{{__('Car Number')}}</th>
-                            <th id="car_color">{{__('Car Color')}}</th>
-                            <th id="car_model">{{__('Car Model')}}</th>
-                            <th id="car_model">{{__('Car Type')}}</th>
+                            <th id="car_number">{{__('Taxi Number')}}</th>
+                            <th id="car_color">{{__('Taxi Color')}}</th>
+                            <th id="car_model">{{__('Taxi Model')}}</th>
+                            {{-- <th id="car_model">{{__('Taxi Type')}}</th> --}}
                             <th id="phone">{{__('Phone')}}</th>
                             <th id="rate">{{__('Total Rate')}}</th>
                             <th>{{__('Actions')}}</th>
@@ -217,7 +232,7 @@
                                     <td>{{$driver['car_Number']}}</td>
                                     <td>{{$driver['car_Color']}}</td>
                                     <td>{{$driver['car_Model']}}</td>
-                                    <td>@if(isset($driver['carType'])) {{$driver['carType']}} @else - @endif</td>
+                                    {{-- <td>@if(isset($driver['carType'])) {{$driver['carType']}} @else - @endif</td> --}}
                                     <td>{{$driver['phone']}}</td>
                                     <td>{{$driver['rates']}}</td>
                                     <td>
@@ -337,6 +352,7 @@
                     $("#last_payment_date").val(resp.last_payment_date);
                     $("#car_type").val(resp.carType);
                     $("#d_rate").val(resp.rates);
+                    $("#wallet_balance").val(resp.wallet_balance);
                 }
             });
         });

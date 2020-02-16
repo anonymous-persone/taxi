@@ -28,27 +28,27 @@
                     <div class="form-group form-primary">
                         <input type="text" autocomplete="off" name="car_Color" id="car_Color" class="form-control" required="" value="{{Request::old('car_Color')}}">
                         <span class="form-bar"></span>
-                        <label class="float-label">{{__('Car Color')}}</label>
+                        <label class="float-label">{{__('Taxi Color')}}</label>
                     </div>
                     <div class="form-group form-primary">
                         <input type="text" autocomplete="off" name="car_Model" id="car_Model" class="form-control" required="" value="{{Request::old('car_Model')}}">
                         <span class="form-bar"></span>
-                        <label class="float-label">{{__('Car Model')}}</label>
+                        <label class="float-label">{{__('Taxi Model')}}</label>
                     </div>
                     <div class="form-group form-primary">
                         <input type="text" autocomplete="off" name="car_Number" id="car_Number" class="form-control" required="" value="{{Request::old('car_Number')}}">
                         <span class="form-bar"></span>
-                        <label class="float-label">{{__('Car Number')}}</label>
+                        <label class="float-label">{{__('Taxi Number')}}</label>
                     </div>
-                    <div class="form-group form-primary">
+                    {{-- <div class="form-group form-primary">
                         <select class="form-control" name="car_type" id="car_type">
-                            <option value="TokTok">Toktok</option>
+                            <option value="Taxi">Taxi</option>
                             <option value="Malaki">Malaki</option>
                             <option value="SevenPassengers">Seven Passengers</option>
                         </select>
                         <span class="form-bar"></span>
-                        <label class="float-label">{{__('Car Type')}}</label>
-                    </div>
+                        <label class="float-label">{{__('Taxi Type')}}</label>
+                    </div> --}}
                     <div class="form-group form-primary">
                         <input type="password" autocomplete="off" name="password" id="password" class="form-control" required="">
                         <span class="form-bar"></span>
@@ -65,6 +65,11 @@
                         <label class="float-label">{{__('Rate')}}</label>
                     </div>
                     <div class="form-group form-primary">
+                        <input type="number" autocomplete="off" name="wallet_balance" id="wallet_balance" class="form-control" required="" value="{{Request::old('wallet_balance')}}">
+                        <span class="form-bar"></span>
+                        <label class="float-label">{{__('Wallet Balance')}}</label>
+                    </div>
+                    {{-- <div class="form-group form-primary">
                         <select class="form-control" name="city">
                             @foreach($cities as $key => $city)
                                 <optgroup label="{{$key}}">{{$key}}</optgroup>
@@ -75,7 +80,7 @@
                         </select>
                         <span class="form-bar"></span>
                         <label class="float-label">{{__('City')}}</label>
-                    </div>
+                    </div> --}}
                     <input type="hidden" name="driver_image" id="dr_image"></input>
                     <div class="form-group form-primary">
                         <button type="submit" id="submit" class="btn btn-success">{{__('Submit')}}</button>

@@ -111,7 +111,8 @@ class DriverController extends Controller
             "image_url" => $image,
             "rates" => $request->rate,
             'city' => $request->city,
-            'carType' => $request->car_type
+            'carType' => $request->car_type,
+            "wallet_balance" => (float) $request->wallet_balance,
         ];
         if ($user->is_agent){
             $log = new Log;
@@ -183,8 +184,12 @@ class DriverController extends Controller
         $DEFAULT_TOKEN = 'QJsf6NkBs2bCRrN15pkt7TI5NK8p4trQXnFOGjxq';
         $DEFAULT_PATH = '/DriversInformation';
         $image = "";
+        $driver = $this->driver($request);
+        $current_wallet_balance = $driver['wallet_balance'];
+        $new_wb = $current_wallet_balance + (float) $request->wb_new;
         if (!empty($request->driver_image)) {
             $firebase = new \Firebase\FirebaseLib($DEFAULT_URL, $DEFAULT_TOKEN);
+
             $data = [
                 "car_Color" => $request->color,
                 "car_Model" => $request->model,
@@ -200,6 +205,7 @@ class DriverController extends Controller
                 'last_payment' => $request->last_payment,
                 'last_payment_date' => $request->last_payment_date,
                 'remaining' => $request->remaining,
+                "wallet_balance" => $new_wb,
             ];
             $firebase->update($DEFAULT_PATH.'/'.$key, $data);
         }else{
@@ -218,6 +224,7 @@ class DriverController extends Controller
                 'last_payment' => $request->last_payment,
                 'last_payment_date' => $request->last_payment_date,
                 'remaining' => $request->remaining,
+                "wallet_balance" => $new_wb,
             ];
             $firebase->update($DEFAULT_PATH.'/'.$key, $data);
         }
@@ -272,6 +279,7 @@ class DriverController extends Controller
         $color = $driver['car_Color'];
         $model = $driver['car_Model'];
         $number = $driver['car_Number'];
+        $wallet_balance = $driver['wallet_balance'];
         $DEFAULT_PATH = '/TripsHistory';
         $firebase = new \Firebase\FirebaseLib($DEFAULT_URL, $DEFAULT_TOKEN);
         $hist = [];
@@ -290,7 +298,7 @@ class DriverController extends Controller
         $keys = [];
         $tr = [];
         $money += $driver['remaining'] ?? 0;
-        if(isset($rates)){
+        // if(isset($rates)){
             foreach ($trips as $k => $trip) {
 //                return $trip;
                 if (isset($trip['driver'])) {
@@ -323,23 +331,27 @@ class DriverController extends Controller
                         }
                         $trip['key'] = $k;
                         $hist[$counter] = $trip;
-                        foreach ($rates as $ratee) {
-                            if (!empty($ratee['trip_id'])) {
-                                if ($ratee['trip_id'] == $k) {
-                                    $hist[$counter]['trip_rate'] = $ratee;
+                        if(isset($rates)){
+                            foreach ($rates as $ratee) {
+                                if (!empty($ratee['trip_id'])) {
+                                    if ($ratee['trip_id'] == $k) {
+                                        $hist[$counter]['trip_rate'] = $ratee;
+                                    }
                                 }
                             }
                         }
+                        
                         $counter++;
                     }
                 }
             }
-        }
+        // }
         if (sizeof($hist) < 1) {
             foreach ($trips as $k => $value) {
                 // return $value;
                 if (isset($value['driver'])) {
                     if ($value['driver'] == $key) {
+                        // $value['key'] = $k;
                         $hist[$k] = $value;
                     }
                 }
@@ -349,7 +361,7 @@ class DriverController extends Controller
         // return ($hist);
         $drivers = new DriverController;
         $drivers = $drivers::drivers();
-        return view('Admin.drivers.show', compact('keys','firstname','riders','drivers',  'lastname','image','phone','rate','color','model','number','hist','earnings', 'user', 'money'));
+        return view('Admin.drivers.show', compact('keys','firstname','riders','drivers',  'lastname','image','phone','rate','color','model','number','hist','earnings', 'user', 'money','wallet_balance'));
     }
 
     public function earnings($driverKey)

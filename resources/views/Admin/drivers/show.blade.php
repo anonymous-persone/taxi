@@ -243,16 +243,16 @@
                             <span class="form-bar"></span>
                         </div>
                         <div class="form-group form-primary">
-                            <label class="float-label"><strong>{{__('Car Color')}} : </strong></label>
+                            <label class="float-label"><strong>{{__('Taxi Color')}} : </strong></label>
                             <label>{{$color}}</label>
                             <span class="form-bar"></span>
                         </div>
                         <div class="form-group">
-                            <label><strong>{{__('Car Model')}} : </strong></label>
+                            <label><strong>{{__('Taxi Model')}} : </strong></label>
                             <label>{{$model}}</label>
                         </div>
                         <div class="form-group">
-                            <label><strong>{{__('Car Number')}} : </strong></label>
+                            <label><strong>{{__('Taxi Number')}} : </strong></label>
                             <label>{{$number}}</label>
                         </div>
                     </div>
@@ -274,7 +274,7 @@
             </div>
             <div class="card-block">
                 <div class="table-responsive">
-                    <div class="row">
+                    {{-- <div class="row">
                         <div class="col-xl-12 col-md-12">
                             <div class="card">
                                 <div class="card-block">
@@ -283,8 +283,8 @@
                                             <i class="icofont icofont-users-alt-2 f-30 text-c-green"></i>
                                         </div>
                                         <div class="col-auto">
-                                            <h6 class="text-muted m-b-10">{{__("Deserved amount since last payout")}}</h6>
-                                            <h2 class="m-b-0">{{$money + ceil((($earnings['today']*15)/100))}} {{__('EGP')}}</h2>
+                                            <h6 class="text-muted m-b-10">{{__("Current Wallet Balance")}}</h6>
+                                            <h2 class="m-b-0">{{$wallet_balance}} {{__(' مليم تونسى')}}</h2>
                                         </div>
                                     </div>
                                     <div>
@@ -293,7 +293,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
                     <div class="row">
                         <div class="col-xl-4 col-md-6">
                             <div class="card">
@@ -304,7 +304,7 @@
                                         </div>
                                         <div class="col-auto">
                                             <h6 class="text-muted m-b-10">{{__("Today's trips cost")}}</h6>
-                                            <h2 class="m-b-0">{{$all = $earnings['today']}} {{__('EGP')}}</h2>
+                                            <h2 class="m-b-0">{{$all = $earnings['today']}} {{__('مليم تونسى')}}</h2>
                                         </div>
                                     </div>
                                     <div class="row align-items-center m-1-0">
@@ -313,7 +313,7 @@
                                         </div>
                                         <div class="col-auto">
                                             <h6 class="text-muted m-b-10">{{__('System percentage')}}</h6>
-                                            <h2 class="m-b-0">{{$x = round((($earnings['today']*15)/100),2)}} {{__('EGP')}}</h2>
+                                            <h2 class="m-b-0">{{$x = round((($earnings['today']*15)/100),2)}} {{__('مليم تونسى')}}</h2>
 
                                         </div>
                                     </div>
@@ -323,7 +323,7 @@
                                         </div>
                                         <div class="col-auto">
                                             <h6 class="text-muted m-b-10">{{__('Earnings')}}</h6>
-                                            <h2 class="m-b-0">{{$c = $all - $x}} {{__('EGP')}}</h2>
+                                            <h2 class="m-b-0">{{$c = $all - $x}} {{__('مليم تونسى')}}</h2>
 
                                         </div>
                                     </div>
@@ -333,7 +333,7 @@
                                         </div>
                                         <div class="col-auto">
                                             <h6 class="text-muted m-b-10">{{__('Cash')}}</h6>
-                                            <h2 class="m-b-0">{{$cash = round($earnings['cashToday'], 2)}} {{__('EGP')}}</h2>
+                                            <h2 class="m-b-0">{{$cash = round($earnings['cashToday'], 2)}} {{__('مليم تونسى')}}</h2>
 
                                         </div>
                                     </div>
@@ -343,7 +343,7 @@
                                         </div>
                                         <div class="col-auto">
                                             <h6 class="text-muted m-b-10">{{__('Outstanding balance')}}</h6>
-                                            <h2 class="m-b-0">{{$earnings['outstandingToday']}} {{__('EGP')}}</h2>
+                                            <h2 class="m-b-0">{{$earnings['outstandingToday']}} {{__('مليم تونسى')}}</h2>
 
                                         </div>
                                     </div>
@@ -359,7 +359,7 @@
                                         </div>
                                         <div class="col-auto">
                                             <h6 class="text-muted m-b-10">{{__('This month trips cost')}}</h6>
-                                            <h2 class="m-b-0">{{$all = $earnings['month']}} {{__('EGP')}}</h2>
+                                            <h2 class="m-b-0">{{$all = $earnings['month']}} {{__('مليم تونسى')}}</h2>
 
                                         </div>
                                     </div>
@@ -369,7 +369,7 @@
                                         </div>
                                         <div class="col-auto">
                                             <h6 class="text-muted m-b-10">{{__('System percentage')}}</h6>
-                                            <h2 class="m-b-0">{{$x = round((($earnings['month']*15)/100),2)}} {{__('EGP')}}</h2>
+                                            <h2 class="m-b-0">{{$x = round((($earnings['month']*15)/100),2)}} {{__('مليم تونسى')}}</h2>
 
                                         </div>
                                     </div>
@@ -379,7 +379,7 @@
                                         </div>
                                         <div class="col-auto">
                                             <h6 class="text-muted m-b-10">{{__('Earnings')}}</h6>
-                                            <h2 class="m-b-0">{{$c = $all - $x}} {{__('EGP')}}</h2>
+                                            <h2 class="m-b-0">{{$c = $all - $x}} {{__('مليم تونسى')}}</h2>
 
                                         </div>
                                     </div>
@@ -389,7 +389,7 @@
                                         </div>
                                         <div class="col-auto">
                                             <h6 class="text-muted m-b-10">{{__('Cash')}}</h6>
-                                            <h2 class="m-b-0">{{$cash = round($earnings['cashMonth'], 2)}} {{__('EGP')}}</h2>
+                                            <h2 class="m-b-0">{{$cash = round($earnings['cashMonth'], 2)}} {{__('مليم تونسى')}}</h2>
 
                                         </div>
                                     </div>
@@ -399,7 +399,7 @@
                                         </div>
                                         <div class="col-auto">
                                             <h6 class="text-muted m-b-10">{{__('Outstanding balance')}}</h6>
-                                            <h2 class="m-b-0">{{round($earnings['outstandingMonth'],2)}} {{__('EGP')}}</h2>
+                                            <h2 class="m-b-0">{{round($earnings['outstandingMonth'],2)}} {{__('مليم تونسى')}}</h2>
 
                                         </div>
                                     </div>
@@ -415,7 +415,7 @@
                                         </div>
                                         <div class="col-auto">
                                             <h6 class="text-muted m-b-10">{{__('Last 12 months trips cost')}}</h6>
-                                            <h2 class="m-b-0">{{$all = $earnings['year']}} {{__('EGP')}}</h2>
+                                            <h2 class="m-b-0">{{$all = $earnings['year']}} {{__('مليم تونسى')}}</h2>
                                         </div>
                                     </div>
                                     <div class="row align-items-center m-1-0">
@@ -424,7 +424,7 @@
                                         </div>
                                         <div class="col-auto">
                                             <h6 class="text-muted m-b-10">{{__('System percentage')}}</h6>
-                                            <h2 class="m-b-0">{{$x = round((($earnings['year']*15)/100),2)}} {{__('EGP')}}</h2>
+                                            <h2 class="m-b-0">{{$x = round((($earnings['year']*15)/100),2)}} {{__('مليم تونسى')}}</h2>
 
                                         </div>
                                     </div>
@@ -434,7 +434,7 @@
                                         </div>
                                         <div class="col-auto">
                                             <h6 class="text-muted m-b-10">{{__('Earnings')}}</h6>
-                                            <h2 class="m-b-0">{{$c = $all - $x}} {{__('EGP')}}</h2>
+                                            <h2 class="m-b-0">{{$c = $all - $x}} {{__('مليم تونسى')}}</h2>
 
                                         </div>
                                     </div>
@@ -444,7 +444,7 @@
                                         </div>
                                         <div class="col-auto">
                                             <h6 class="text-muted m-b-10">{{__('Cash')}}</h6>
-                                            <h2 class="m-b-0">{{$cash = round($earnings['cashYear'], 2)}} {{__('EGP')}}</h2>
+                                            <h2 class="m-b-0">{{$cash = round($earnings['cashYear'], 2)}} {{__('مليم تونسى')}}</h2>
 
                                         </div>
                                     </div>
@@ -454,7 +454,7 @@
                                         </div>
                                         <div class="col-auto">
                                             <h6 class="text-muted m-b-10">{{__('Outstanding balance')}}</h6>
-                                            <h2 class="m-b-0">{{round($earnings['outstandingYear'], 2)}} {{__('EGP')}}</h2>
+                                            <h2 class="m-b-0">{{round($earnings['outstandingYear'], 2)}} {{__('مليم تونسى')}}</h2>
 
                                         </div>
                                     </div>
@@ -472,7 +472,7 @@
                                         </div>
                                         <div class="col-auto">
                                             <h6 class="text-muted m-b-10">{{__('This Week trips cost')}}</h6>
-                                            <h2 class="m-b-0">{{$all = $earnings['week']}} EGP</h2>
+                                            <h2 class="m-b-0">{{$all = $earnings['week']}} مليم تونسى</h2>
                                         </div>
                                     </div>
                                     <div class="row align-items-center m-1-0">
@@ -481,7 +481,7 @@
                                         </div>
                                         <div class="col-auto">
                                             <h6 class="text-muted m-b-10">{{__('System percentage')}}</h6>
-                                            <h2 class="m-b-0">{{$x = round((($earnings['week']*15)/100),2)}} {{__('EGP')}}</h2>
+                                            <h2 class="m-b-0">{{$x = round((($earnings['week']*15)/100),2)}} {{__('مليم تونسى')}}</h2>
 
                                         </div>
                                     </div>
@@ -491,7 +491,7 @@
                                         </div>
                                         <div class="col-auto">
                                             <h6 class="text-muted m-b-10">{{__('Earnings')}}</h6>
-                                            <h2 class="m-b-0">{{$c = $all - $x}} {{__('EGP')}}</h2>
+                                            <h2 class="m-b-0">{{$c = $all - $x}} {{__('مليم تونسى')}}</h2>
 
                                         </div>
                                     </div>
@@ -501,7 +501,7 @@
                                         </div>
                                         <div class="col-auto">
                                             <h6 class="text-muted m-b-10">{{__('Cash')}}</h6>
-                                            <h2 class="m-b-0">{{$cash = round($earnings['cashWeek'],2)}} {{__('EGP')}}</h2>
+                                            <h2 class="m-b-0">{{$cash = round($earnings['cashWeek'],2)}} {{__('مليم تونسى')}}</h2>
 
                                         </div>
                                     </div>
@@ -511,7 +511,7 @@
                                         </div>
                                         <div class="col-auto">
                                             <h6 class="text-muted m-b-10">{{__('Outstanding balance')}}</h6>
-                                            <h2 class="m-b-0">{{round($earnings['outstandingWeek'],2)}} {{__('EGP')}}</h2>
+                                            <h2 class="m-b-0">{{round($earnings['outstandingWeek'],2)}} {{__('مليم تونسى')}}</h2>
 
                                         </div>
                                     </div>
@@ -574,7 +574,7 @@
                                 <td>@if(isset($history['comments'])) {{$history['comments']}} @endif</td>
                                 <td>
                                     <a data-toggle="modal" data-target="#singleEmailModal" data-key="{{$history['key']}}" data-placement="left" title="{{__('Edit')}}" class="edit"><i class="feather icon-edit f-w-600 f-16 m-r-15 text-c-blue"></i></a>
-                                    <a data-key="{{$history['key']}}" href="https://wasalni-225100.firebaseio.com/TripsHistory/{{$history['key']}}" data-placement="left" title="{{__('View on firebase')}}" class="edit"><i class="feather icon-eye f-w-600 f-16 m-r-15 text-c-blue"></i></a>
+                                    <a data-key="{{$history['key']}}" href="https://taxi-c503a.firebaseio.com/TripsHistory/{{$history['key']}}" data-placement="left" title="{{__('View on firebase')}}" class="edit"><i class="feather icon-eye f-w-600 f-16 m-r-15 text-c-blue"></i></a>
                                 </td>
                             </tr>
                         @endforeach
