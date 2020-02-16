@@ -279,7 +279,8 @@ class DriverController extends Controller
         $color = $driver['car_Color'];
         $model = $driver['car_Model'];
         $number = $driver['car_Number'];
-        $wallet_balance = $driver['wallet_balance'];
+        $wallet_balance = 0;
+        if(isset($driver['wallet_balance'])){$wallet_balance = $driver['wallet_balance'];}
         $DEFAULT_PATH = '/TripsHistory';
         $firebase = new \Firebase\FirebaseLib($DEFAULT_URL, $DEFAULT_TOKEN);
         $hist = [];
