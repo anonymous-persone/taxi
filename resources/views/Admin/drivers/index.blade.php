@@ -133,7 +133,7 @@
                         <div class="section-field col-md-12">
                             <div class="form-group">
                                 <label >{{__('Wallet Balance')}}</label>
-                                <input type="number" name="wallet_balance" id="wallet_balance" class="form-control" readonly>
+                                <input type="number" name="walletBalance" id="walletBalance" class="form-control" readonly>
                             </div>
                         </div>
                     </div><div class="row">
@@ -352,7 +352,7 @@
                     $("#last_payment_date").val(resp.last_payment_date);
                     $("#car_type").val(resp.carType);
                     $("#d_rate").val(resp.rates);
-                    $("#wallet_balance").val(resp.wallet_balance);
+                    $("#walletBalance").val(resp.walletBalance);
                 }
             });
         });

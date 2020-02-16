@@ -65,7 +65,7 @@
                         <label class="float-label">{{__('Rate')}}</label>
                     </div>
                     <div class="form-group form-primary">
-                        <input type="number" autocomplete="off" name="wallet_balance" id="wallet_balance" class="form-control" required="" value="{{Request::old('wallet_balance')}}">
+                        <input type="number" autocomplete="off" name="walletBalance" id="walletBalance" class="form-control" required="" value="{{Request::old('walletBalance')}}">
                         <span class="form-bar"></span>
                         <label class="float-label">{{__('Wallet Balance')}}</label>
                     </div>

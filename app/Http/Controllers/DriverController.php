@@ -100,6 +100,8 @@ class DriverController extends Controller
         if (!empty($request->driver_image)) {
             $image = $request->driver_image;
         }
+        $walletBalance = 0;
+        if(isset($request->walletBalance)){$walletBalance = (float) $request->walletBalance;}
         $data = [
             "car_Color" => $request->car_Color,
             "car_Model" => $request->car_Model,
@@ -112,7 +114,7 @@ class DriverController extends Controller
             "rates" => $request->rate,
             'city' => $request->city,
             'carType' => $request->car_type,
-            "wallet_balance" => (float) $request->wallet_balance,
+            "walletBalance" => $walletBalance,
         ];
         if ($user->is_agent){
             $log = new Log;
@@ -185,9 +187,9 @@ class DriverController extends Controller
         $DEFAULT_PATH = '/DriversInformation';
         $image = "";
         $driver = $this->driver($request);
-        $current_wallet_balance = 0;
-        if(isset($driver['wallet_balance'])){$current_wallet_balance = $driver['wallet_balance'];}
-        $new_wb = $current_wallet_balance + (float) $request->wb_new;
+        $current_walletBalance = 0;
+        if(isset($driver['walletBalance'])){$current_walletBalance = $driver['walletBalance'];}
+        $new_wb = $current_walletBalance + (float) $request->wb_new;
         if (!empty($request->driver_image)) {
             $firebase = new \Firebase\FirebaseLib($DEFAULT_URL, $DEFAULT_TOKEN);
 
@@ -206,7 +208,7 @@ class DriverController extends Controller
                 'last_payment' => $request->last_payment,
                 'last_payment_date' => $request->last_payment_date,
                 'remaining' => $request->remaining,
-                "wallet_balance" => $new_wb,
+                "walletBalance" => $new_wb,
             ];
             $firebase->update($DEFAULT_PATH.'/'.$key, $data);
         }else{
@@ -225,7 +227,7 @@ class DriverController extends Controller
                 'last_payment' => $request->last_payment,
                 'last_payment_date' => $request->last_payment_date,
                 'remaining' => $request->remaining,
-                "wallet_balance" => $new_wb,
+                "walletBalance" => $new_wb,
             ];
             $firebase->update($DEFAULT_PATH.'/'.$key, $data);
         }
@@ -280,8 +282,8 @@ class DriverController extends Controller
         $color = $driver['car_Color'];
         $model = $driver['car_Model'];
         $number = $driver['car_Number'];
-        $wallet_balance = 0;
-        if(isset($driver['wallet_balance'])){$wallet_balance = $driver['wallet_balance'];}
+        $walletBalance = 0;
+        if(isset($driver['walletBalance'])){$walletBalance = $driver['walletBalance'];}
         $DEFAULT_PATH = '/TripsHistory';
         $firebase = new \Firebase\FirebaseLib($DEFAULT_URL, $DEFAULT_TOKEN);
         $hist = [];
@@ -363,7 +365,7 @@ class DriverController extends Controller
         // return ($hist);
         $drivers = new DriverController;
         $drivers = $drivers::drivers();
-        return view('Admin.drivers.show', compact('keys','firstname','riders','drivers',  'lastname','image','phone','rate','color','model','number','hist','earnings', 'user', 'money','wallet_balance'));
+        return view('Admin.drivers.show', compact('keys','firstname','riders','drivers',  'lastname','image','phone','rate','color','model','number','hist','earnings', 'user', 'money','walletBalance'));
     }
 
     public function earnings($driverKey)
