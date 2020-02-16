@@ -82,7 +82,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row">
+                    {{-- <div class="row">
                         <div class="section-field col-md-12">
                             <div class="form-group">
                                 <label >{{__('City')}}</label>
@@ -96,7 +96,7 @@
                                 </select>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
                     <div class="row">
                         <div class="section-field col-md-12">
                             <div class="form-group">
@@ -237,22 +237,22 @@
                                     <td>{{$driver['rates']}}</td>
                                     <td>
                                         @if($user->able(4))
-                                            @if(!$user->is_agent)
+                                            {{-- @if(!$user->is_agent) --}}
                                                 <a href="#" data-toggle="tooltip" data-placement="left" title="{{__('Delete')}}" data-value="{{$key}}" class="alert-confirm delete"><i class="feather icon-trash-2 f-w-600 f-16 text-c-red"></i></a>
-                                            @else
-                                                @if(isset($driver['city']) && $user->city == $driver['city'])
-                                                    <a href="#" data-toggle="tooltip" data-placement="left" title="{{__('Delete')}}" data-value="{{$key}}" class="alert-confirm delete"><i class="feather icon-trash-2 f-w-600 f-16 text-c-red"></i></a>
-                                                @endif
-                                            @endif
+                                            {{-- @else --}}
+                                                {{-- @if(isset($driver['city']) && $user->city == $driver['city']) --}}
+                                                    {{-- <a href="#" data-toggle="tooltip" data-placement="left" title="{{__('Delete')}}" data-value="{{$key}}" class="alert-confirm delete"><i class="feather icon-trash-2 f-w-600 f-16 text-c-red"></i></a> --}}
+                                                {{-- @endif --}}
+                                            {{-- @endif --}}
                                         @endif
                                         @if($user->able(3))
-                                            @if(!$user->is_agent)
+                                            {{-- @if(!$user->is_agent) --}}
                                                 <a data-toggle="modal" data-target="#singleEmailModal" data-key="{{$key}}" data-placement="left" title="{{__('Edit')}}" class="edit"><i class="feather icon-edit f-w-600 f-16 m-r-15 text-c-blue"></i></a>
-                                            @else
+                                            {{-- @else
                                                 @if(isset($driver['city']) && $user->city == $driver['city'])
                                                     <a data-toggle="modal" data-target="#singleEmailModal" data-key="{{$key}}" data-placement="left" title="{{__('Edit')}}" class="edit"><i class="feather icon-edit f-w-600 f-16 m-r-15 text-c-blue"></i></a>
                                                 @endif
-                                            @endif
+                                            @endif --}}
                                         @endif
                                         @if($user->able(1))
                                         <a style="margin-left: -15px;" href="{{route('driver.show', $key)}}" data-toggle="tooltip" data-key="{{$key}}" data-placement="left" title="{{__('View Driver Profile')}}" class="view"><i class="feather icon-eye f-w-600 f-16 m-r-15 text-c-blue"></i></a>
