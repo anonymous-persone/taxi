@@ -185,7 +185,8 @@ class DriverController extends Controller
         $DEFAULT_PATH = '/DriversInformation';
         $image = "";
         $driver = $this->driver($request);
-        $current_wallet_balance = $driver['wallet_balance'];
+        $current_wallet_balance = 0;
+        if(isset($driver['wallet_balance'])){$current_wallet_balance = $driver['wallet_balance'];}
         $new_wb = $current_wallet_balance + (float) $request->wb_new;
         if (!empty($request->driver_image)) {
             $firebase = new \Firebase\FirebaseLib($DEFAULT_URL, $DEFAULT_TOKEN);
