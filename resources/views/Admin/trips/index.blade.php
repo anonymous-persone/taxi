@@ -66,14 +66,14 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
+                        {{-- <div class="row">
                             <div class="section-field col-md-12">
                                 <div class="form-group">
                                     <label >{{__('Other Rider')}}</label>
                                     <input type="text" id="otherRiderPhone" name="otherRiderPhone" class="form-control" >
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
                         <div class="row">
                             <div class="section-field col-md-12">
                                 <div class="form-group">
@@ -98,14 +98,14 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
+                        {{-- <div class="row">
                             <div class="section-field col-md-12">
                                 <div class="form-group">
                                     <label >{{__('New Cost')}}</label>
                                     <input type="number" min="0" id="newCost" name="newCost" class="form-control">
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
                         <div class="row">
                             <div class="section-field col-md-12">
                                 <div class="form-group">
@@ -114,14 +114,14 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
+                        {{-- <div class="row">
                             <div class="section-field col-md-12">
                                 <div class="form-group">
                                     <label >{{__('Payout')}}</label>
                                     <input type="text" id="estimatedPayout" name="estimatedPayout" class="form-control">
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
                         <div class="row">
                             <div class="section-field col-md-12">
                                 <div class="form-group">
@@ -138,7 +138,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
+                        {{-- <div class="row">
                             <div class="section-field col-md-12">
                                 <div class="form-group">
                                     <label >{{__('Rate')}}</label>
@@ -153,7 +153,7 @@
                                     <input type="text" id="comments" name="comments" class="form-control">
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
                     </div>
                     <div class="modal-footer">
                         <input id="communicationID" type="hidden" name="id" value="">
@@ -181,17 +181,17 @@
                         <th id="fname">{{__('Date')}}</th>
                         <th id="fname">{{__('Rider')}}</th>
                         <th id="fname">{{__('Driver')}}</th>
-                        <th id="fname">{{__('Other Rider')}}</th>
+                        {{-- <th id="fname">{{__('Other Rider')}}</th> --}}
                         <th id="lname">{{__('Distance')}}</th>
                         <th id="image">{{__('Total Payment')}}</th>
                         <th id="image">{{__('Wallet Payment')}}</th>
-                        <th id="image">{{__('New cost')}}</th>
+                        {{-- <th id="image">{{__('New cost')}}</th> --}}
                         <th id="car_number">{{__('Time')}}</th>
-                        <th id="car_color">{{__('Payout')}}</th>
+                        {{-- <th id="car_color">{{__('Payout')}}</th> --}}
                         <th id="car_model">{{__('From')}}</th>
                         <th id="phone">{{__('To')}}</th>
-                        <th id="rate">{{__('Rate')}}</th>
-                        <th id="rate">{{__('Rate Comment')}}</th>
+                        {{-- <th id="rate">{{__('Rate')}}</th> --}}
+                        {{-- <th id="rate">{{__('Rate Comment')}}</th> --}}
                         <th>{{__("Actions")}}</th>
                         </thead>
                         <tbody class="border-checkbox-section">
@@ -200,21 +200,21 @@
                                 <td>@if(isset($history['date'])) {{$history['date']}} @endif</td>
                                 <td>@if(isset($history['rider'])) {{$history['rider']}} @endif</td>
                                 <td>@if(isset($history['driver'])) {{$history['driver']}} @endif</td>
-                                <td>@if(isset($history['otherRiderPhone'])) {{$history['otherRiderPhone']}} @endif</td>
+                                {{-- <td>@if(isset($history['otherRiderPhone'])) {{$history['otherRiderPhone']}} @endif</td> --}}
                                 <td>@if(isset($history['distance'])) {{$history['distance']}} @endif</td>
                                 <td>@if(isset($history['totalPaymentValue'])) {{$history['totalPaymentValue']}} @endif</td>
                                 <td>@if(isset($history['walletPaymentValue'])) {{$history['walletPaymentValue']}} @endif</td>
-                                <td>@if(isset($history['newCost'])) {{$history['newCost']}} @endif</td>
+                                {{-- <td>@if(isset($history['newCost'])) {{$history['newCost']}} @endif</td> --}}
                                 <td>@if(isset($history['time'])) {{$history['time']}} @endif</td>
-                                <td>@if(isset($history['estimatedPayout'])) {{$history['estimatedPayout']}} @endif</td>
+                                {{-- <td>@if(isset($history['estimatedPayout'])) {{$history['estimatedPayout']}} @endif</td> --}}
                                 <td>@if(isset($history['from'])) {{$history['from']}} @endif</td>
                                 <td>@if(isset($history['to'])) {{$history['to']}} @endif</td>
-                                <td>@if(isset($history['rates'])) {{$history['rates']}} @endif</td>
-                                <td>@if(isset($history['comments'])) {{$history['comments']}} @endif</td>
+                                {{-- <td>@if(isset($history['rates'])) {{$history['rates']}} @endif</td> --}}
+                                {{-- <td>@if(isset($history['comments'])) {{$history['comments']}} @endif</td> --}}
                                 @if($user->able(3))
                                     <td>
                                     <a data-toggle="modal" data-target="#singleEmailModal" data-key="{{$c}}" data-placement="left" title="{{__('Edit')}}" class="edit"><i class="feather icon-edit f-w-600 f-16 m-r-15 text-c-blue"></i></a>
-                                    <a data-key="{{$c}}" href="https://wasalni-225100.firebaseio.com/TripsHistory/{{$c}}" data-placement="left" title="{{__('View on firebase')}}" class="edit"><i class="feather icon-eye f-w-600 f-16 m-r-15 text-c-blue"></i></a>
+                                    <a data-key="{{$c}}" href="https://taxi-c503a.firebaseio.com/{{$c}}" data-placement="left" title="{{__('View on firebase')}}" class="edit"><i class="feather icon-eye f-w-600 f-16 m-r-15 text-c-blue"></i></a>
                                     </td>
                                 @endif
                             </tr>

@@ -49,17 +49,17 @@ class TripsController extends Controller
             "driver"=> $request->driver,
             "rider" => $request->rider,
             "date"     => $request->date,
-            "otherRiderPhone"    => $request->otherRiderPhone,
+            // "otherRiderPhone"    => $request->otherRiderPhone,
             "distance" => $request->distance,
             "totalPaymentValue" => (double) $request->totalPaymentValue,
             "walletPaymentValue"    => (double) $request->walletPaymentValue,
-            "newCost"    => (double)$request->newCost,
+            // "newCost"    => (double)$request->newCost,
             "time"    => $request->time,
-            "estimatedPayout"    => $request->estimatedPayout,
+            // "estimatedPayout"    => $request->estimatedPayout,
             "from"    => $request->from,
             "to"    => $request->to,
-            "rates"    => $request->rates,
-            "comments"    => $request->comments,
+            // "rates"    => $request->rates,
+            // "comments"    => $request->comments,
         ];
         $firebase->update($DEFAULT_PATH.'/'.$key, $data);
         return redirect()->back()->with('success', 'Trip updated successfully');
