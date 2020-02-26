@@ -49,7 +49,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row">
+                    {{-- <div class="row">
                         <div class="section-field col-md-12">
                             <div class="form-group">
                                 <label >{{__('Gender')}}</label>
@@ -86,7 +86,7 @@
                                 </select>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
                     <div class="row">
                         <div class="section-field col-md-12">
                             <div class="form-group">
@@ -99,7 +99,23 @@
                         <div class="section-field col-md-12">
                             <div class="form-group">
                                 <label >{{__('Wallet Balance')}}</label>
-                                <input type="number" min="0" name="wallet" id="wallet" class="form-control" required>
+                                <input type="number" name="walletBalance" id="walletBalance" class="form-control" readonly>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="section-field col-md-12">
+                            <div class="form-group">
+                                <label >{{__('Add to Wallet Balance : ')}}</label>
+                                <input type="number" name="wb_new" id="wb_new" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="section-field col-md-12">
+                            <div class="form-group">
+                                <label >{{__('ID Number : ')}}</label>
+                                <input type="text" name="id_Number" id="id_Number" class="form-control">
                             </div>
                         </div>
                     </div>
@@ -133,6 +149,9 @@
                             <th id="lname">{{__('Last Name')}}</th>
                             <th id="image">{{__('Image')}}</th>
                             <th id="phone">{{__('Phone')}}</th>
+                            <th id="phone">{{__('Wallet Balance')}}</th>
+                            <th id="phone">{{__('ID Number')}}</th>
+
                             <th>{{__('Actions')}}</th>
                         </thead>
                         <tbody class="border-checkbox-section">
@@ -146,6 +165,8 @@
                                     <td><img height="70" width="70" src="{{asset('assets/admin/images/default-face.jpg')}}"></td>
                                     @endif
                                     <td>{{$driver['phone']}}</td>
+                                    <td>{{$driver['walletBalance']}}</td>
+                                    <td>{{$driver['id_Number']}}</td>
                                     <td>
                                         @if ($user->able(8))
                                         <a href="{{route('rider.show', $key)}}" data-toggle="tooltip" data-key="{{$key}}" data-placement="left" title="{{__('View Driver Profile')}}" class="view"><i class="feather icon-eye f-w-600 f-16 m-r-15 text-c-blue"></i></a>
@@ -213,25 +234,27 @@
                 data: {key:key},
                 success:function(resp){
                     console.log(key);
-                    var gender = 'ذكر';
-                    if(resp.gender == 'أنثي' || resp.gender == 'أنثى'){
-                        gender = 'أنثي'
-                    }else{
-                        gender = resp.gender;
-                    }
-                    var markaz = '';
-                    if(resp.markaz == 'بنى سويف' || resp.markaz == 'بني سويف'){
-                        markaz = 'بنى سويف';
-                    }else{
-                        markaz = resp.markaz;
-                    }
+                    // var gender = 'ذكر';
+                    // if(resp.gender == 'أنثي' || resp.gender == 'أنثى'){
+                    //     gender = 'أنثي'
+                    // }else{
+                    //     gender = resp.gender;
+                    // }
+                    // var markaz = '';
+                    // if(resp.markaz == 'بنى سويف' || resp.markaz == 'بني سويف'){
+                    //     markaz = 'بنى سويف';
+                    // }else{
+                    //     markaz = resp.markaz;
+                    // }
                     $("#first_name").val(resp.first_Name);
                     $("#last_name").val(resp.last_Name);
                     $("#phone").val(resp.phone);
-                    $("#wallet").val(resp.walletBalance);
-                    $("#markaz").val(markaz);
-                    $("#governorate").val(resp.governorate);
-                    $("#gender").val(gender);
+                    $("#walletBalance").val(resp.walletBalance);
+                    $("#id_Number").val(resp.id_Number);
+
+                    // $("#markaz").val(markaz);
+                    // $("#governorate").val(resp.governorate);
+                    // $("#gender").val(gender);
                     $("#driver_key").val(key);
                 }
             });

@@ -110,14 +110,20 @@ class RiderController extends Controller
         $DEFAULT_TOKEN = 'QJsf6NkBs2bCRrN15pkt7TI5NK8p4trQXnFOGjxq';
         $DEFAULT_PATH = '/RidersInformation';
         $firebase = new \Firebase\FirebaseLib($DEFAULT_URL, $DEFAULT_TOKEN);
+        $rider = $this->rider($request);
+        $current_walletBalance = 0;
+        if(isset($rider['walletBalance'])){$current_walletBalance = $rider['walletBalance'];}
+        $new_wb = $current_walletBalance + (double) $request->wb_new;
         $data = [
             "first_Name"=> $request->first_name,
             "last_Name" => $request->last_name,
             "phone"     => $request->phone,
-            "gender"    => $request->gender,
-            "walletBalance" => (double) $request->wallet,
-            "governorate" => $request->governorate,
-            "markaz"    => $request->markaz
+            // "gender"    => $request->gender,
+            // "governorate" => $request->governorate,
+            // "markaz"    => $request->markaz
+            "walletBalance" => $new_wb,
+            "id_Number" => $request->id_Number,
+
         ];
         $firebase->update($DEFAULT_PATH.'/'.$key, $data);
         return redirect()->back()->with('success', 'Rider updated successfully');
@@ -136,18 +142,24 @@ class RiderController extends Controller
         $firebase = new \Firebase\FirebaseLib($DEFAULT_URL, $DEFAULT_TOKEN);
         // $earnings = $this->earnings($key);
         // return $earnings;
-        $drivers = $firebase->get($DEFAULT_PATH);
-        $driver = json_decode($drivers,true);
-        foreach ($driver as $dr) {
+        $riders = $firebase->get($DEFAULT_PATH);
+        $riders = json_decode($riders,true);
+        foreach ($riders as $dr) {
             if ($dr['phone'] == $key) {
-                $driver = $dr;
+                $rider = $dr;
                 break;
             }
         }
-        $firstname = $driver['first_Name'];
-        $lastname = $driver['last_Name'];
-        $image = $driver['image_url'];
-        $phone = $driver['phone'];
+        $firstname = $rider['first_Name'];
+        $lastname = $rider['last_Name'];
+        $image = $rider['image_url'];
+        $phone = $rider['phone'];
+        $id_Number = $rider['id_Number'];
+        $walletBalance = $rider['walletBalance'];
+
+        $drivers = new DriverController();
+        $drivers = $drivers::drivers();
+
 
         $DEFAULT_PATH = '/TripsHistory';
         $firebase = new \Firebase\FirebaseLib($DEFAULT_URL, $DEFAULT_TOKEN);
@@ -181,7 +193,7 @@ class RiderController extends Controller
             }
 
         }
-        // return ($hist);
-        return view('Admin.riders.show', compact('firstname','lastname','image','phone','hist', 'user'));
+        // dd($hist);
+        return view('Admin.riders.show', compact('riders','drivers','firstname','lastname','image','phone','id_Number','walletBalance','hist', 'user'));
     }
 }

@@ -35,6 +35,7 @@ class TripsController extends Controller
 
         $trips = $firebase->get($DEFAULT_PATH.'/'.$request->key);
         $trip = json_decode($trips,true);
+        // var_dump($request->key);
         return $trip;
     }
 
@@ -49,12 +50,15 @@ class TripsController extends Controller
             "driver"=> $request->driver,
             "rider" => $request->rider,
             "date"     => $request->date,
-            // "otherRiderPhone"    => $request->otherRiderPhone,
-            "distance" => $request->distance,
+            "traveledDistance" => $request->traveledDistance,
             "totalPaymentValue" => (double) $request->totalPaymentValue,
             "walletPaymentValue"    => (double) $request->walletPaymentValue,
-            // "newCost"    => (double)$request->newCost,
-            "time"    => $request->time,
+            "tripCost" => (double) $request->tripCost,
+            "cashPaymentValue"    => (double) $request->cashPaymentValue,
+            "commission"    => (double) $request->commission,
+            "newCost"    => (double) $request->newCost,
+            "otherRiderPhone"    => $request->otherRiderPhone,
+            "waitTime"    => (double) $request->waitTime,
             // "estimatedPayout"    => $request->estimatedPayout,
             "from"    => $request->from,
             "to"    => $request->to,

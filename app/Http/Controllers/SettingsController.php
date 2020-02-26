@@ -41,10 +41,11 @@ class SettingsController extends Controller
         $DEFAULT_PATH = '/SystemSettings';
         $firebase = new \Firebase\FirebaseLib($DEFAULT_URL, $DEFAULT_TOKEN);
         $data = [
-            "commissionPercentage" => (float) $request->commissionPercentage,
-            "initialTripCost" => (float) $request->initialTripCost,
-            "tripPerMeterCost"=> (float) $request->tripPerMeterCost,
-            "tripPerSecondCost"=> (float) $request->tripPerSecondCost,
+            "commissionPercentage" => (double) $request->commissionPercentage,
+            "initialTripCost" => (double) $request->initialTripCost,
+            "tripPerMeterCost"=> (double) $request->tripPerMeterCost,
+            "tripPerSecondCost"=> (double) $request->tripPerSecondCost,
+            "addCost"=> (double) $request->addCost,
         ];
         try{
             $firebase->update($DEFAULT_PATH, $data);
@@ -137,7 +138,7 @@ class SettingsController extends Controller
                 
                 $data = [
                     "cardNumber" => $number['Card Number'],
-                    "value" => (float) $cardValue,
+                    "value" => (double) $cardValue,
                 ];
                 $firebase->push($DEFAULT_PATH, $data);
             }

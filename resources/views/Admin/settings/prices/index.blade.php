@@ -12,19 +12,23 @@
                 <div class="card-block" id="card-block">
                     <div class="form-group form-primary">
                         <label>{{__('Commission Percentage')}}</label>
-                        <input type="number" step=".01" autocomplete="off" name="commissionPercentage" id="commissionPercentage" class="form-control" required="" value="{{$prices->commissionPercentage}}">
+                        <input type="number" step=".05" autocomplete="off" name="commissionPercentage" id="commissionPercentage" class="form-control" required="" value="{{$prices->commissionPercentage}}">
                     </div>
                     <div class="form-group form-primary">
                         <label>{{__('Initial Trip Cost')}}</label>
-                        <input type="number" step=".01" autocomplete="off" name="initialTripCost" id="initialTripCost" class="form-control" required="" value="{{$prices->initialTripCost}}">
+                        <input type="number" step=".05" autocomplete="off" name="initialTripCost" id="initialTripCost" class="form-control" required="" value="{{$prices->initialTripCost}}">
                     </div>
                     <div class="form-group form-primary">
                         <label>{{__('Trip Per Meter Cost')}}</label>
-                        <input type="number" step=".01" autocomplete="off" name="tripPerMeterCost" id="tripPerMeterCost" class="form-control" required="" value="{{$prices->tripPerMeterCost}}">
+                        <input type="number" step=".05" autocomplete="off" name="tripPerMeterCost" id="tripPerMeterCost" class="form-control" required="" value="{{$prices->tripPerMeterCost}}">
                     </div>
                     <div class="form-group form-primary">
                         <label>{{__('Trip Per Second Cost')}}</label>
-                        <input type="number" step=".01" autocomplete="off" name="tripPerSecondCost" id="tripPerSecondCost" class="form-control" required="" value="{{$prices->tripPerSecondCost}}">
+                        <input type="number" step=".05" autocomplete="off" name="tripPerSecondCost" id="tripPerSecondCost" class="form-control" required="" value="{{$prices->tripPerSecondCost}}">
+                    </div>
+                    <div class="form-group form-primary">
+                        <label>{{__('Add Cost')}}</label>
+                        <input type="number" step="1" autocomplete="off" name="addCost" id="addCost" class="form-control" required="" value="{{$prices->addCost}}">
                     </div>
                     
                 </div>

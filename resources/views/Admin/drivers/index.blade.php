@@ -55,6 +55,11 @@
                             <div class="form-group">
                                 <label>{{__('Password')}}</label>
                                 <input type="password" id="password" name="password" class="form-control" required>
+                                <span style="float: right;
+                                margin-left: -25px;
+                                margin-top: -25px;
+                                position: relative;
+                                z-index: 2;" toggle="#password" class="feather icon-eye  f-w-600 f-16 m-r-15 text-c-blue toggle-password"></span>
                             </div>
                         </div>
                     </div>
@@ -108,8 +113,8 @@
                     <div class="row">
                         <div class="section-field col-md-12">
                             <div class="form-group">
-                                <label >{{__('Taxi Color')}}</label>
-                                <input type="text" name="color" id="color" class="form-control" required>
+                                <label >{{__('Car Plate')}}</label>
+                                <input style="direction:rtl; text-align:left"type="text" name="color" id="color" class="form-control" required>
                             </div>
                         </div>
                     </div>
@@ -136,7 +141,8 @@
                                 <input type="number" name="walletBalance" id="walletBalance" class="form-control" readonly>
                             </div>
                         </div>
-                    </div><div class="row">
+                    </div>
+                    <div class="row">
                         <div class="section-field col-md-12">
                             <div class="form-group">
                                 <label >{{__('Add to Wallet Balance : ')}}</label>
@@ -211,7 +217,7 @@
                             <th id="lname">{{__('Last Name')}}</th>
                             <th id="image">{{__('Image')}}</th>
                             <th id="car_number">{{__('Taxi Number')}}</th>
-                            <th id="car_color">{{__('Taxi Color')}}</th>
+                            <th id="car_color">{{__('Car Plate')}}</th>
                             <th id="car_model">{{__('Taxi Model')}}</th>
                             {{-- <th id="car_model">{{__('Taxi Type')}}</th> --}}
                             <th id="phone">{{__('Phone')}}</th>
@@ -230,7 +236,7 @@
                                     <td><img height="70" width="70" src="{{asset('assets/admin/images/default-face.jpg')}}"></td>
                                     @endif
                                     <td>{{$driver['car_Number']}}</td>
-                                    <td>{{$driver['car_Color']}}</td>
+                                    <td style="direction:rtl; text-align:left">{{$driver['car_Color']}}</td>
                                     <td>{{$driver['car_Model']}}</td>
                                     {{-- <td>@if(isset($driver['carType'])) {{$driver['carType']}} @else - @endif</td> --}}
                                     <td>{{$driver['phone']}}</td>
@@ -328,6 +334,19 @@
 
     <script type="text/javascript">
         $("#dataTable").on('click', '.edit', function(e){
+            
+            //toggle password
+            $(".toggle-password").click(function() {
+            $(this).toggleClass('icon-eye-off')
+            var input = $('#password');
+            if (input.attr("type") == "password") {
+            input.attr("type", "text");
+            } else {
+            input.attr("type", "password");
+            }
+            });
+            //
+
             var el = $(this);
             var key = el.data('key');
             $.ajax({
@@ -374,5 +393,8 @@
             $("#theImage").attr('src',"https://firebasestorage.googleapis.com/v0/b/wasalni-225100.appspot.com/o/drivers%2F"+fileName+"?alt=media&token=a1ceb69b-a1e4-45a6-84f8-910baecdd067")
             $("#the_image").fadeIn();
         })
+    </script>
+    <script>
+        
     </script>
 @endsection

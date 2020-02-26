@@ -51,6 +51,180 @@
         }
     </style>
 @endsection
+@section('modals')
+    <div class="modal fade" id="singleEmailModal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="modal-title">
+                        <div class="section-title mb-10">
+                            <h6>{{__('Edit Trip')}}</h6>
+                        </div>
+                    </div>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form id="edit_user_form" action="{{route('trip.update')}}" method="post" enctype="multipart/form-data">
+                    <div class="modal-body">
+                        @csrf
+                        <input type="hidden" id="trip_key" name="key" value="">
+                        <div class="row">
+                            <div class="section-field col-md-12">
+                                <div class="form-group">
+                                    <label >{{__('Date')}}</label>
+                                    <input type="text" id="date" name="date" class="form-control" >
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="section-field col-md-12">
+                                <div class="form-group">
+                                    <label >{{__('Rider')}}</label>
+                                    <select class="form-control" name="rider" id="rider">
+                                        @foreach($riders as $key => $rider)
+                                            <option value="{{$rider['phone']}}">{{$rider['first_Name']}} {{$rider['last_Name']}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="section-field col-md-12">
+                                <div class="form-group">
+                                    <label>{{__('Driver')}}</label>
+                                    <select class="form-control" name="driver" id="driver">
+                                        @foreach($drivers as $key => $driver)
+                                            <option value="{{$driver['phone']}}">{{$driver['first_Name']}} {{$driver['last_Name']}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        {{-- <div class="row">
+                            <div class="section-field col-md-12">
+                                <div class="form-group">
+                                    <label >{{__('Other Rider')}}</label>
+                                    <input type="text" id="otherRiderPhone" name="otherRiderPhone" class="form-control" >
+                                </div>
+                            </div>
+                        </div> --}}
+                        <div class="row">
+                            <div class="section-field col-md-12">
+                                <div class="form-group">
+                                    <label >{{__('Travelled Distance')}}</label>
+                                    <input type="text" id="traveledDistance" name="traveledDistance" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="section-field col-md-12">
+                                <div class="form-group">
+                                    <label >{{__('Trip Cost')}}</label>
+                                    <input type="text" id="tripCost" name="tripCost" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="section-field col-md-12">
+                                <div class="form-group">
+                                    <label >{{__('Base Fare')}}</label>
+                                    <input type="text" id="totalPaymentValue" name="totalPaymentValue" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="section-field col-md-12">
+                                <div class="form-group">
+                                    <label >{{__('Wallet Payment')}}</label>
+                                    <input type="text" id="walletPaymentValue" name="walletPaymentValue" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="section-field col-md-12">
+                                <div class="form-group">
+                                    <label >{{__('Cash Payment')}}</label>
+                                    <input type="number" min="0" id="cashPaymentValue" name="cashPaymentValue" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="section-field col-md-12">
+                                <div class="form-group">
+                                    <label >{{__('Wait Time')}}</label>
+                                    <input type="text" id="waitTime" name="waitTime" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="section-field col-md-12">
+                                <div class="form-group">
+                                    <label >{{__('New Cost')}}</label>
+                                    <input type="text" id="newCost" name="newCost" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="section-field col-md-12">
+                                <div class="form-group">
+                                    <label >{{__('Other Rider Phone')}}</label>
+                                    <input type="text" id="otherRiderPhone" name="otherRiderPhone" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                        {{-- <div class="row">
+                            <div class="section-field col-md-12">
+                                <div class="form-group">
+                                    <label >{{__('Payout')}}</label>
+                                    <input type="text" id="estimatedPayout" name="estimatedPayout" class="form-control">
+                                </div>
+                            </div>
+                        </div> --}}
+                        <div class="row">
+                            <div class="section-field col-md-12">
+                                <div class="form-group">
+                                    <label >{{__('From')}}</label>
+                                    <input type="text" id="from" name="from" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="section-field col-md-12">
+                                <div class="form-group">
+                                    <label >{{__('To')}}</label>
+                                    <input type="text" id="to" name="to" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                        {{-- <div class="row">
+                            <div class="section-field col-md-12">
+                                <div class="form-group">
+                                    <label >{{__('Rate')}}</label>
+                                    <input type="text" id="rates" name="rates" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="section-field col-md-12">
+                                <div class="form-group">
+                                    <label >{{__('Rate Comment')}}</label>
+                                    <input type="text" id="comments" name="comments" class="form-control">
+                                </div>
+                            </div>
+                        </div> --}}
+                    </div>
+                    <div class="modal-footer">
+                        <input id="communicationID" type="hidden" name="id" value="">
+                        <button type="submit" class="btn btn-primary pull-right">
+                            <i class="fa fa-check"></i> {{__('Save')}}
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+@endsection
 @section('page_body')
 <div class="row">
     <div class="col-md-12">
@@ -84,6 +258,20 @@
                                     <span class="form-bar"></span>
                                 </div>
                             </div>
+                            <div class="col-md-12">
+                                <div class="form-group form-primary">
+                                    <label class="float-label"><strong>Wallet Balance : </strong></label>
+                                    <label>{{$walletBalance}}</label>
+                                    <span class="form-bar"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group form-primary">
+                                    <label class="float-label"><strong>ID Number : </strong></label>
+                                    <label>{{$id_Number}}</label>
+                                    <span class="form-bar"></span>
+                                </div>
+                            </div>
                         </div>
 
                     </div>
@@ -110,40 +298,47 @@
                         <th id="fname">{{__('Date')}}</th>
                         <th id="fname">{{__('Rider')}}</th>
                         <th id="fname">{{__('Driver')}}</th>
-                        <th id="fname">{{__('Other Rider')}}</th>
-                        <th id="lname">{{__('Distance')}}</th>
+                        <th id="lname">{{__('Travelled Distance')}}</th>
+                        <th id="lname">{{__('Trip Cost')}}</th>
                         <th id="image">{{__('Total Payment')}}</th>
                         <th id="image">{{__('Wallet Payment')}}</th>
-                        <th id="image">{{__('New cost')}}</th>
-                        <th id="car_number">{{__('Time')}}</th>
-                        <th id="car_color">{{__('Payout')}}</th>
+                        <th id="image">{{__('Cash Payment')}}</th>
+                        <th id="image">{{__('Commission')}}</th>
+                        <th id="car_number">{{__('Wait Time')}}</th>
+                        <th id="car_model">{{__('New Cost')}}</th>
+                        <th id="car_model">{{__('Other Rider Phone')}}</th>
                         <th id="car_model">{{__('From')}}</th>
                         <th id="phone">{{__('To')}}</th>
-                        <th id="rate">{{__('Rate')}}</th>
-                        <th id="rate">{{__('Rate Comment')}}</th>
+                        {{-- <th id="rate">{{__('Rate')}}</th> --}}
+                        {{-- <th id="rate">{{__('Rate Comment')}}</th> --}}
                         <th>{{__("Actions")}}</th>
                         </thead>
                         <tbody class="border-checkbox-section">
                         @foreach($hist as $c => $history)
+                        {{-- {{dd($history)}} --}}
                             <tr>
                                 <td>@if(isset($history['date'])) {{$history['date']}} @endif</td>
                                 <td>@if(isset($history['rider'])) {{$history['rider']}} @endif</td>
                                 <td>@if(isset($history['driver'])) {{$history['driver']}} @endif</td>
-                                <td>@if(isset($history['otherRiderPhone'])) {{$history['otherRiderPhone']}} @endif</td>
-                                <td>@if(isset($history['distance'])) {{$history['distance']}} @endif</td>
+                                <td>@if(isset($history['traveledDistance'])) {{$history['traveledDistance']}} @endif</td>
+                                <td>@if(isset($history['tripCost'])) {{$history['tripCost']}} @endif</td>
                                 <td>@if(isset($history['totalPaymentValue'])) {{$history['totalPaymentValue']}} @endif</td>
                                 <td>@if(isset($history['walletPaymentValue'])) {{$history['walletPaymentValue']}} @endif</td>
+                                <td>@if(isset($history['cashPaymentValue'])) {{$history['cashPaymentValue']}} @endif</td>
+                                <td>@if(isset($history['commission'])) {{$history['commission']}} @endif</td>
+                                <td>@if(isset($history['waitTime'])) {{$history['waitTime']}} @endif</td>
                                 <td>@if(isset($history['newCost'])) {{$history['newCost']}} @endif</td>
-                                <td>@if(isset($history['time'])) {{$history['time']}} @endif</td>
-                                <td>@if(isset($history['estimatedPayout'])) {{$history['estimatedPayout']}} @endif</td>
+                                <td>@if(isset($history['otherRiderPhone'])) {{$history['otherRiderPhone']}} @endif</td>
                                 <td>@if(isset($history['from'])) {{$history['from']}} @endif</td>
                                 <td>@if(isset($history['to'])) {{$history['to']}} @endif</td>
-                                <td>@if(isset($history['rates'])) {{$history['rates']}} @endif</td>
-                                <td>@if(isset($history['comments'])) {{$history['comments']}} @endif</td>
-                                <td>
+                                {{-- <td>@if(isset($history['rates'])) {{$history['rates']}} @endif</td> --}}
+                                {{-- <td>@if(isset($history['comments'])) {{$history['comments']}} @endif</td> --}}
+                                @if($user->able(3))
+                                    <td>
                                     <a data-toggle="modal" data-target="#singleEmailModal" data-key="{{$history['key']}}" data-placement="left" title="{{__('Edit')}}" class="edit"><i class="feather icon-edit f-w-600 f-16 m-r-15 text-c-blue"></i></a>
-                                    <a data-key="{{$history['key']}}" href="https://wasalni-225100.firebaseio.com/TripsHistory/{{$history['key']}}" data-placement="left" title="{{__('View on firebase')}}" class="edit"><i class="feather icon-eye f-w-600 f-16 m-r-15 text-c-blue"></i></a>
-                                </td>
+                                    <a data-key="{{$history['key']}}" href="https://taxi-c503a.firebaseio.com/{{$c}}" data-placement="left" title="{{__('View on firebase')}}" class="edit"><i class="feather icon-eye f-w-600 f-16 m-r-15 text-c-blue"></i></a>
+                                    </td>
+                                @endif
                             </tr>
                         @endforeach
                         </tbody>
@@ -165,20 +360,55 @@
     <script type="text/javascript">
         $("#dataTable").dataTable();
     </script>
-<script>
-var acc = document.getElementsByClassName("accordion");
-var i;
+    <script type="text/javascript">
+        $("#dataTable").on('click', '.edit', function(e){
+            var el = $(this);
+            var key = el.data('key');
+            console.log(key);
+            $.ajax({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                url: "{{route('trip.get')}}",
+                type: "POST",
+                data: {key:key},
+                success:function(resp){
+                    // console.log(resp);
+                    $("#driver").val(resp.driver);
+                    $("#rider").val(resp.rider);
+                    $("#date").val(resp.date);
+                    $("#traveledDistance").val(resp.traveledDistance);
+                    $("#tripCost").val(resp.tripCost);
+                    $("#totalPaymentValue").val(resp.totalPaymentValue);
+                    $("#walletPaymentValue").val(resp.walletPaymentValue);
+                    $("#cashPaymentValue").val(resp.cashPaymentValue);
+                    $("#commission").val(resp.commission);
+                    $("#waitTime").val(resp.waitTime);
+                    $("#newCost").val(resp.newCost);
+                    $("#otherRiderPhone").val(resp.otherRiderPhone);
+                    $("#from").val(resp.from);
+                    $("#to").val(resp.to);
+                    // $("#rates").val(resp.rates);
+                    // $("#comments").val(resp.comments);
+                    $("#trip_key").val(key);
+                }
+            });
+        });
+    </script>
+    <script>
+    var acc = document.getElementsByClassName("accordion");
+    var i;
 
-for (i = 0; i < acc.length; i++) {
-  acc[i].addEventListener("click", function() {
-    this.classList.toggle("active");
-    var panel = this.nextElementSibling;
-    if (panel.style.maxHeight){
-      panel.style.maxHeight = null;
-    } else {
-      panel.style.maxHeight = panel.scrollHeight + "px";
+    for (i = 0; i < acc.length; i++) {
+    acc[i].addEventListener("click", function() {
+        this.classList.toggle("active");
+        var panel = this.nextElementSibling;
+        if (panel.style.maxHeight){
+        panel.style.maxHeight = null;
+        } else {
+        panel.style.maxHeight = panel.scrollHeight + "px";
+        }
+    });
     }
-  });
-}
-</script>
+    </script>
 @endsection

@@ -101,7 +101,7 @@ class DriverController extends Controller
             $image = $request->driver_image;
         }
         $walletBalance = 0;
-        if(isset($request->walletBalance)){$walletBalance = (float) $request->walletBalance;}
+        if(isset($request->walletBalance)){$walletBalance = (double) $request->walletBalance;}
         $data = [
             "car_Color" => $request->car_Color,
             "car_Model" => $request->car_Model,
@@ -189,7 +189,7 @@ class DriverController extends Controller
         $driver = $this->driver($request);
         $current_walletBalance = 0;
         if(isset($driver['walletBalance'])){$current_walletBalance = $driver['walletBalance'];}
-        $new_wb = $current_walletBalance + (float) $request->wb_new;
+        $new_wb = $current_walletBalance + (double) $request->wb_new;
         if (!empty($request->driver_image)) {
             $firebase = new \Firebase\FirebaseLib($DEFAULT_URL, $DEFAULT_TOKEN);
 

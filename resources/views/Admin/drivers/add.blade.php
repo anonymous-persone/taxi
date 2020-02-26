@@ -26,9 +26,9 @@
                         <label class="float-label">{{__('Driver Image')}}</label>
                     </div>
                     <div class="form-group form-primary">
-                        <input type="text" autocomplete="off" name="car_Color" id="car_Color" class="form-control" required="" value="{{Request::old('car_Color')}}">
+                        <input style="direction:rtl; text-align:left" type="text" autocomplete="off" name="car_Color" id="car_Color" class="form-control" required="" value="{{Request::old('car_Color')}}">
                         <span class="form-bar"></span>
-                        <label class="float-label">{{__('Taxi Color')}}</label>
+                        <label class="float-label">{{__('Car Plate')}}</label>
                     </div>
                     <div class="form-group form-primary">
                         <input type="text" autocomplete="off" name="car_Model" id="car_Model" class="form-control" required="" value="{{Request::old('car_Model')}}">
