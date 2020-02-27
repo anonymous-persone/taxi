@@ -587,12 +587,12 @@
                                 <td>@if(isset($history['driver'])) {{$history['driver']}} @endif</td>
                                 <td>@if(isset($history['traveledDistance'])) {{$history['traveledDistance']}} @endif</td>
                                 <td>@if(isset($history['tripCost'])) {{$history['tripCost']}} @endif</td>
-                                <td>@if(isset($history['totalPaymentValue'])) {{$history['totalPaymentValue']}} @endif</td>
-                                <td>@if(isset($history['walletPaymentValue'])) {{$history['walletPaymentValue']}} @endif</td>
-                                <td>@if(isset($history['cashPaymentValue'])) {{$history['cashPaymentValue']}} @endif</td>
-                                <td>@if(isset($history['commission'])) {{$history['commission']}} @endif</td>
+                                <td>@if(isset($history['totalPaymentValue'])) {{round($history['totalPaymentValue'],2)}} @endif</td>
+                                <td>@if(isset($history['walletPaymentValue'])) {{round($history['walletPaymentValue'],2)}} @endif</td>
+                                <td>@if(isset($history['cashPaymentValue'])) {{round($history['cashPaymentValue'],2)}} @endif</td>
+                                <td>@if(isset($history['commission'])) {{round($history['commission'],2)}} @endif</td>
                                 <td>@if(isset($history['waitTime'])) {{$history['waitTime']}} @endif</td>
-                                <td>@if(isset($history['newCost'])) {{$history['newCost']}} @endif</td>
+                                <td>@if(isset($history['newCost'])) {{round($history['newCost'],2)}} @endif</td>
                                 <td>@if(isset($history['otherRiderPhone'])) {{$history['otherRiderPhone']}} @endif</td>
                                 <td>@if(isset($history['from'])) {{$history['from']}} @endif</td>
                                 <td>@if(isset($history['to'])) {{$history['to']}} @endif</td>

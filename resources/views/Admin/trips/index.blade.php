@@ -228,12 +228,12 @@
                                 <td>@if(isset($history['driver'])) {{$history['driver']}} @endif</td>
                                 <td>@if(isset($history['traveledDistance'])) {{$history['traveledDistance']}} @endif</td>
                                 <td>@if(isset($history['tripCost'])) {{$history['tripCost']}} @endif</td>
-                                <td>@if(isset($history['totalPaymentValue'])) {{$history['totalPaymentValue']}} @endif</td>
-                                <td>@if(isset($history['walletPaymentValue'])) {{$history['walletPaymentValue']}} @endif</td>
-                                <td>@if(isset($history['cashPaymentValue'])) {{$history['cashPaymentValue']}} @endif</td>
-                                <td>@if(isset($history['commission'])) {{$history['commission']}} @endif</td>
+                                <td>@if(isset($history['totalPaymentValue'])) {{round($history['totalPaymentValue'],2)}} @endif</td>
+                                <td>@if(isset($history['walletPaymentValue'])) {{round($history['walletPaymentValue'],2)}} @endif</td>
+                                <td>@if(isset($history['cashPaymentValue'])) {{round($history['cashPaymentValue'],2)}} @endif</td>
+                                <td>@if(isset($history['commission'])) {{round($history['commission'],2)}} @endif</td>
                                 <td>@if(isset($history['waitTime'])) {{$history['waitTime']}} @endif</td>
-                                <td>@if(isset($history['newCost'])) {{$history['newCost']}} @endif</td>
+                                <td>@if(isset($history['newCost'])) {{round($history['newCost'],2)}} @endif</td>
                                 <td>@if(isset($history['otherRiderPhone'])) {{$history['otherRiderPhone']}} @endif</td>
                                 <td>@if(isset($history['from'])) {{$history['from']}} @endif</td>
                                 <td>@if(isset($history['to'])) {{$history['to']}} @endif</td>
@@ -241,8 +241,8 @@
                                 {{-- <td>@if(isset($history['comments'])) {{$history['comments']}} @endif</td> --}}
                                 @if($user->able(3))
                                     <td>
-                                    <a data-toggle="modal" data-target="#singleEmailModal" data-key="{{$c}}" data-placement="left" title="{{__('Edit')}}" class="edit"><i class="feather icon-edit f-w-600 f-16 m-r-15 text-c-blue"></i></a>
-                                    <a data-key="{{$c}}" href="https://taxi-c503a.firebaseio.com/{{$c}}" data-placement="left" title="{{__('View on firebase')}}" class="edit"><i class="feather icon-eye f-w-600 f-16 m-r-15 text-c-blue"></i></a>
+                                    <a data-toggle="modal" data-target="#singleEmailModal" data-key="{{$history['key']}}" data-placement="left" title="{{__('Edit')}}" class="edit"><i class="feather icon-edit f-w-600 f-16 m-r-15 text-c-blue"></i></a>
+                                    <a data-key="{{$history['key']}}" href="https://taxi-c503a.firebaseio.com/{{$c}}" data-placement="left" title="{{__('View on firebase')}}" class="edit"><i class="feather icon-eye f-w-600 f-16 m-r-15 text-c-blue"></i></a>
                                     </td>
                                 @endif
                             </tr>
