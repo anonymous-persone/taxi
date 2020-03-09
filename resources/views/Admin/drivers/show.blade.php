@@ -197,7 +197,7 @@
                                 </div>
                             </div>
                         </div>
-                        {{-- <div class="row">
+                        <div class="row">
                             <div class="section-field col-md-12">
                                 <div class="form-group">
                                     <label >{{__('Rate')}}</label>
@@ -212,7 +212,7 @@
                                     <input type="text" id="comments" name="comments" class="form-control">
                                 </div>
                             </div>
-                        </div> --}}
+                        </div>
                     </div>
                     <div class="modal-footer">
                         <input id="communicationID" type="hidden" name="id" value="">
@@ -575,8 +575,8 @@
                         <th id="car_model">{{__('Other Rider Phone')}}</th>
                         <th id="car_model">{{__('From')}}</th>
                         <th id="phone">{{__('To')}}</th>
-                        {{-- <th id="rate">{{__('Rate')}}</th> --}}
-                        {{-- <th id="rate">{{__('Rate Comment')}}</th> --}}
+                        <th id="rate">{{__('Rate')}}</th>
+                        <th id="rate">{{__('Rate Comment')}}</th>
                         <th>{{__("Actions")}}</th>
                         </thead>
                         <tbody class="border-checkbox-section">
@@ -596,8 +596,8 @@
                                 <td>@if(isset($history['otherRiderPhone'])) {{$history['otherRiderPhone']}} @endif</td>
                                 <td>@if(isset($history['from'])) {{$history['from']}} @endif</td>
                                 <td>@if(isset($history['to'])) {{$history['to']}} @endif</td>
-                                {{-- <td>@if(isset($history['rates'])) {{$history['rates']}} @endif</td> --}}
-                                {{-- <td>@if(isset($history['comments'])) {{$history['comments']}} @endif</td> --}}
+                                <td>@if(isset($history['rates'])) {{$history['rates']}} @endif</td>
+                                <td>@if(isset($history['comments'])) {{$history['comments']}} @endif</td>
                                 @if($user->able(3))
                                     <td>
                                     <a data-toggle="modal" data-target="#singleEmailModal" data-key="{{$history['key']}}" data-placement="left" title="{{__('Edit')}}" class="edit"><i class="feather icon-edit f-w-600 f-16 m-r-15 text-c-blue"></i></a>
@@ -668,8 +668,8 @@ for (i = 0; i < acc.length; i++) {
                 $("#otherRiderPhone").val(resp.otherRiderPhone);
                 $("#from").val(resp.from);
                 $("#to").val(resp.to);
-                // $("#rates").val(resp.rates);
-                // $("#comments").val(resp.comments);
+                $("#rates").val(resp.rates);
+                $("#comments").val(resp.comments);
                 $("#trip_key").val(key);
             }
         });

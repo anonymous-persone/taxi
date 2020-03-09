@@ -22,6 +22,11 @@
 						<a href="{{route('drivers')}}" class="waves-effect waves-dark">
 							<span class="pcoded-mtext">{{__('All Drivers')}}</span>
 						</a>
+                    </li>
+                    <li @if('drivers' == request()->segment(3)) class="active" @endif>
+						<a href="{{route('drivers.online')}}" class="waves-effect waves-dark">
+							<span class="pcoded-mtext">{{__('Online Drivers')}}</span>
+						</a>
 					</li>
 					@endif
 					@if($user->able(2))

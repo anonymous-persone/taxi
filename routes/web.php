@@ -17,6 +17,7 @@ Route::get('/', 'FrontController@index');
 Route::group(['middleware' => ['auth', 'setlocale']], function(){
 	Route::get('dashboard', 'DashboardController@index')->name('dashboard');
 	Route::get('/drivers', 'DriverController@index')->name('drivers');
+	Route::get('/online-drivers', 'DriverController@onlineDrivers')->name('drivers.online');
 	Route::get('/driver/show/{key}', 'DriverController@show')->name('driver.show');
 	Route::get('/drivers/add', 'DriverController@add')->name('drivers.new');
 	Route::post('/drivers/create', 'DriverController@create')->name('driver.create');
