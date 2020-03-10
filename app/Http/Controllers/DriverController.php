@@ -78,25 +78,32 @@ class DriverController extends Controller
             session()->flash('success', 'Sorry you do not have this permission.');
             return redirect()->back();
         }
+
+        $title = "Online Drivers";
+        $cities = static::data();
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, "https://taxi-c503a.firebaseio.com/Drivers.json");
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
         $output = curl_exec($ch);
         curl_close($ch);
         $drivers = json_decode($output,true);
+        $onlineDrivers = [];
 // dd($drivers);
+        if(empty($drivers)){
+            $onlineDrivers = false;
+            return view('Admin.drivers.online', compact('onlineDrivers','title', 'user', 'cities'));
+        }
         $DEFAULT_URL = 'https://taxi-c503a.firebaseio.com/';
         $DEFAULT_TOKEN = 'QJsf6NkBs2bCRrN15pkt7TI5NK8p4trQXnFOGjxq';
         $DEFAULT_PATH = '/DriversInformation';
         $firebase = new \Firebase\FirebaseLib($DEFAULT_URL, $DEFAULT_TOKEN);
-        $onlineDrivers = [];
-        foreach ($drivers as $key => $driver) {
+        foreach ($drivers as $key => $ondriver) {
             $driver = $firebase->get($DEFAULT_PATH.'/'.$key);
             $driver = json_decode($driver,true);
             array_push($onlineDrivers,array_merge($drivers[$key],$driver));
         }
-        $title = "Online Drivers";
-        $cities = static::data();
+        // dd($onlineDrivers);
+        
 
         return view('Admin.drivers.online', compact('onlineDrivers','title', 'user', 'cities'));
     }

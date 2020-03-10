@@ -229,55 +229,57 @@
                             <th>{{__('Actions')}}</th>
                         </thead>
                         <tbody class="border-checkbox-section">
-                            @foreach($onlineDrivers as $key => $driver)
-                            @if(isset($driver['phone']))
-                                <tr>
-                                    <td>{{$driver['first_Name']}}</td>
-                                    <td>{{$driver['last_Name']}}</td>
-                                    @if(!empty($driver['image_url']))
-                                    <td><img src="{{$driver['image_url']}}" width="70" height="70"></td>
-                                    @else
-                                    <td><img height="70" width="70" src="{{asset('assets/admin/images/default-face.jpg')}}"></td>
-                                    @endif
-                                    <td>{{$driver['car_Number']}}</td>
-                                    <td style="direction:rtl; text-align:left">{{$driver['car_Color']}}</td>
-                                    <td>{{$driver['car_Model']}}</td>
-                                    {{-- <td>@if(isset($driver['carType'])) {{$driver['carType']}} @else - @endif</td> --}}
-                                    <td>{{$driver['phone']}}</td>
-                                    <td>{{$driver['rates']}}</td>
-                                    @if ($driver['is_available'] == true)
-                                    <td>{{__('Available')}}</td>
-                                    @else
-                                    <td>{{__('Busy')}}</td>
-                                    @endif
-                                    <td>{{$driver['l'][0]}}</td>
-                                    <td>{{$driver['l'][1]}}</td>
-                                    <td>
-                                        @if($user->able(4))
-                                            {{-- @if(!$user->is_agent) --}}
-                                                <a href="#" data-toggle="tooltip" data-placement="left" title="{{__('Delete')}}" data-value="{{$driver['phone']}}" class="alert-confirm delete"><i class="feather icon-trash-2 f-w-600 f-16 text-c-red"></i></a>
-                                            {{-- @else --}}
-                                                {{-- @if(isset($driver['city']) && $user->city == $driver['city']) --}}
-                                                    {{-- <a href="#" data-toggle="tooltip" data-placement="left" title="{{__('Delete')}}" data-value="{{$key}}" class="alert-confirm delete"><i class="feather icon-trash-2 f-w-600 f-16 text-c-red"></i></a> --}}
+                            @if ($onlineDrivers)                            
+                                @foreach($onlineDrivers as $key => $driver)
+                                @if(isset($driver['phone']))
+                                    <tr>
+                                        <td>{{$driver['first_Name']}}</td>
+                                        <td>{{$driver['last_Name']}}</td>
+                                        @if(!empty($driver['image_url']))
+                                        <td><img src="{{$driver['image_url']}}" width="70" height="70"></td>
+                                        @else
+                                        <td><img height="70" width="70" src="{{asset('assets/admin/images/default-face.jpg')}}"></td>
+                                        @endif
+                                        <td>{{$driver['car_Number']}}</td>
+                                        <td style="direction:rtl; text-align:left">{{$driver['car_Color']}}</td>
+                                        <td>{{$driver['car_Model']}}</td>
+                                        {{-- <td>@if(isset($driver['carType'])) {{$driver['carType']}} @else - @endif</td> --}}
+                                        <td>{{$driver['phone']}}</td>
+                                        <td>{{$driver['rates']}}</td>
+                                        @if ($driver['is_available'] == true)
+                                        <td>{{__('Available')}}</td>
+                                        @else
+                                        <td>{{__('Busy')}}</td>
+                                        @endif
+                                        <td>{{$driver['l'][0]}}</td>
+                                        <td>{{$driver['l'][1]}}</td>
+                                        <td>
+                                            @if($user->able(4))
+                                                {{-- @if(!$user->is_agent) --}}
+                                                    <a href="#" data-toggle="tooltip" data-placement="left" title="{{__('Delete')}}" data-value="{{$driver['phone']}}" class="alert-confirm delete"><i class="feather icon-trash-2 f-w-600 f-16 text-c-red"></i></a>
+                                                {{-- @else --}}
+                                                    {{-- @if(isset($driver['city']) && $user->city == $driver['city']) --}}
+                                                        {{-- <a href="#" data-toggle="tooltip" data-placement="left" title="{{__('Delete')}}" data-value="{{$key}}" class="alert-confirm delete"><i class="feather icon-trash-2 f-w-600 f-16 text-c-red"></i></a> --}}
+                                                    {{-- @endif --}}
                                                 {{-- @endif --}}
-                                            {{-- @endif --}}
-                                        @endif
-                                        @if($user->able(3))
-                                            {{-- @if(!$user->is_agent) --}}
-                                                <a data-toggle="modal" data-target="#singleEmailModal" data-key="{{$driver['phone']}}" data-placement="left" title="{{__('Edit')}}" class="edit"><i class="feather icon-edit f-w-600 f-16 m-r-15 text-c-blue"></i></a>
-                                            {{-- @else
-                                                @if(isset($driver['city']) && $user->city == $driver['city'])
-                                                    <a data-toggle="modal" data-target="#singleEmailModal" data-key="{{$key}}" data-placement="left" title="{{__('Edit')}}" class="edit"><i class="feather icon-edit f-w-600 f-16 m-r-15 text-c-blue"></i></a>
-                                                @endif
-                                            @endif --}}
-                                        @endif
-                                        @if($user->able(1))
-                                        <a style="margin-left: -15px;" href="{{route('driver.show', $driver['phone'])}}" data-toggle="tooltip" data-key="{{$driver['phone']}}" data-placement="left" title="{{__('View Driver Profile')}}" class="view"><i class="feather icon-eye f-w-600 f-16 m-r-15 text-c-blue"></i></a>
-                                        @endif
-                                    </td>
-                                </tr>
+                                            @endif
+                                            @if($user->able(3))
+                                                {{-- @if(!$user->is_agent) --}}
+                                                    <a data-toggle="modal" data-target="#singleEmailModal" data-key="{{$driver['phone']}}" data-placement="left" title="{{__('Edit')}}" class="edit"><i class="feather icon-edit f-w-600 f-16 m-r-15 text-c-blue"></i></a>
+                                                {{-- @else
+                                                    @if(isset($driver['city']) && $user->city == $driver['city'])
+                                                        <a data-toggle="modal" data-target="#singleEmailModal" data-key="{{$key}}" data-placement="left" title="{{__('Edit')}}" class="edit"><i class="feather icon-edit f-w-600 f-16 m-r-15 text-c-blue"></i></a>
+                                                    @endif
+                                                @endif --}}
+                                            @endif
+                                            @if($user->able(1))
+                                            <a style="margin-left: -15px;" href="{{route('driver.show', $driver['phone'])}}" data-toggle="tooltip" data-key="{{$driver['phone']}}" data-placement="left" title="{{__('View Driver Profile')}}" class="view"><i class="feather icon-eye f-w-600 f-16 m-r-15 text-c-blue"></i></a>
+                                            @endif
+                                        </td>
+                                    </tr>
+                                @endif
+                                @endforeach
                             @endif
-                            @endforeach
                         </tbody>
                     </table>
                 </div>
