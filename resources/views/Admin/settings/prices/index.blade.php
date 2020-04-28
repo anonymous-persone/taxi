@@ -32,11 +32,11 @@
                     </div>
                     <div class="form-group form-primary">
                         <label>{{__('غرامه الالغاء')}}</label>
-                        <input type="number" step=".001" autocomplete="off" name="cancelCost" id="cancelCost" class="form-control" required="" value="{{$prices->cancelCost}}">
+                        <input type="number" step=".001" autocomplete="off" name="riderFineAmount" id="riderFineAmount" class="form-control" required="" value="{{$prices->riderFineAmount}}">
                     </div>
                     <div class="form-group form-primary">
                         <label>{{__('نسبه الالغاء من السائق')}}</label>
-                        <input type="number" step=".001" autocomplete="off" name="cancelRatio" id="cancelRatio" class="form-control" required="" value="{{$prices->cancelRatio}}">
+                        <input type="number" step=".001" autocomplete="off" name="riderFineDriverSharePercentage" id="riderFineDriverSharePercentage" class="form-control" required="" value="{{$prices->riderFineDriverSharePercentage}}">
                     </div>
                     
                 </div>
