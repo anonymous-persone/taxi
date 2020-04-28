@@ -154,7 +154,8 @@ class RiderController extends Controller
         $lastname = $rider['last_Name'];
         $image = $rider['image_url'];
         $phone = $rider['phone'];
-        $id_Number = $rider['id_Number'];
+        // $id_Number = $rider['id_Number'];
+        if(isset($rider['email']) && !empty($rider['email'])) $email = $rider['email']; else{$email = '';}
         $walletBalance = $rider['walletBalance'];
 
         $drivers = new DriverController();
@@ -194,6 +195,6 @@ class RiderController extends Controller
 
         }
         // dd($hist);
-        return view('Admin.riders.show', compact('riders','drivers','firstname','lastname','image','phone','id_Number','walletBalance','hist', 'user'));
+        return view('Admin.riders.show', compact('riders','drivers','firstname','lastname','image','phone','email','walletBalance','hist', 'user'));
     }
 }

@@ -38,7 +38,7 @@
 					@endif
 				</ul>
 			</li>
-			<li class="pcoded-hasmenu @if('drivers' == request()->segment(2)) active pcoded-trigger @endif">
+			{{-- <li class="pcoded-hasmenu @if('drivers' == request()->segment(2)) active pcoded-trigger @endif">
 				<a href="javascript:void(0)" class="waves-effect waves-dark">
 					<span class="pcoded-micon"><i class="feather icon-users"></i></span>
 					<span class="pcoded-mtext">{{__('Riders')}}</span>
@@ -59,7 +59,15 @@
 					</li>
 					@endif
 				</ul>
-			</li>
+			</li> --}}
+			
+			<li class="@if('riders' == request()->segment(2)) active pcoded-trigger @endif">
+                <a href="{{route('riders')}}" class="waves-effect waves-dark">
+					<span class="pcoded-micon"><i class="feather icon-users"></i></span>
+                    <span class="pcoded-mtext">{{__('Riders')}}</span>
+                </a>
+            </li>
+            
             <li class="@if('trips' == request()->segment(2)) active pcoded-trigger @endif">
                 <a href="{{route('trips')}}" class="waves-effect waves-dark">
                     <span class="pcoded-micon"><i class="feather icon-loader"></i></span>

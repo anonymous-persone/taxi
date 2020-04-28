@@ -267,11 +267,18 @@
                             </div>
                             <div class="col-md-12">
                                 <div class="form-group form-primary">
+                                    <label class="float-label"><strong>E-mail : </strong></label>
+                                    <label>{{$email}}</label>
+                                    <span class="form-bar"></span>
+                                </div>
+                            </div>
+                            {{-- <div class="col-md-12">
+                                <div class="form-group form-primary">
                                     <label class="float-label"><strong>ID Number : </strong></label>
                                     <label>{{$id_Number}}</label>
                                     <span class="form-bar"></span>
                                 </div>
-                            </div>
+                            </div> --}}
                         </div>
 
                     </div>

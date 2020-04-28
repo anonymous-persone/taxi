@@ -46,6 +46,8 @@ class SettingsController extends Controller
             "tripPerMeterCost"=> (double) $request->tripPerMeterCost,
             "tripPerSecondCost"=> (double) $request->tripPerSecondCost,
             "addCost"=> (double) $request->addCost,
+            "cancelCost"=> (double) $request->cancelCost,
+            "cancelRatio"=> (double) $request->cancelRatio,
         ];
         try{
             $firebase->update($DEFAULT_PATH, $data);

@@ -150,7 +150,7 @@
                             <th id="image">{{__('Image')}}</th>
                             <th id="phone">{{__('Phone')}}</th>
                             <th id="phone">{{__('Wallet Balance')}}</th>
-                            <th id="phone">{{__('ID Number')}}</th>
+                            {{-- <th id="phone">{{__('ID Number')}}</th> --}}
 
                             <th>{{__('Actions')}}</th>
                         </thead>
@@ -166,7 +166,7 @@
                                     @endif
                                     <td>{{$driver['phone']}}</td>
                                     <td>{{$driver['walletBalance']}}</td>
-                                    <td>{{$driver['id_Number']}}</td>
+                                    {{-- <td>{{$driver['id_Number']}}</td> --}}
                                     <td>
                                         @if ($user->able(8))
                                         <a href="{{route('rider.show', $key)}}" data-toggle="tooltip" data-key="{{$key}}" data-placement="left" title="{{__('View Driver Profile')}}" class="view"><i class="feather icon-eye f-w-600 f-16 m-r-15 text-c-blue"></i></a>

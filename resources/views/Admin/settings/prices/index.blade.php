@@ -30,6 +30,14 @@
                         <label>{{__('Add Cost')}}</label>
                         <input type="number" step=".001" autocomplete="off" name="addCost" id="addCost" class="form-control" required="" value="{{$prices->addCost}}">
                     </div>
+                    <div class="form-group form-primary">
+                        <label>{{__('غرامه الالغاء')}}</label>
+                        <input type="number" step=".001" autocomplete="off" name="cancelCost" id="cancelCost" class="form-control" required="" value="{{$prices->cancelCost}}">
+                    </div>
+                    <div class="form-group form-primary">
+                        <label>{{__('نسبه الالغاء من السائق')}}</label>
+                        <input type="number" step=".001" autocomplete="off" name="cancelRatio" id="cancelRatio" class="form-control" required="" value="{{$prices->cancelRatio}}">
+                    </div>
                     
                 </div>
                 <button type="submit" class="btn btn-success">{{__('Save')}}</button>

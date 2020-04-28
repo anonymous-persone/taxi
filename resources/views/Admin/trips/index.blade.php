@@ -240,9 +240,9 @@
                                 <td>@if(isset($history['rates'])) {{$history['rates']}} @endif</td>
                                 <td>@if(isset($history['comments'])) {{$history['comments']}} @endif</td>
                                 @if($user->able(3))
-                                    <td>
+                                    <td class="text-center">
                                     <a data-toggle="modal" data-target="#singleEmailModal" data-key="{{$c}}" data-placement="left" title="{{__('Edit')}}" class="edit"><i class="feather icon-edit f-w-600 f-16 m-r-15 text-c-blue"></i></a>
-                                    <a data-key="{{$c}}" href="https://taxi-c503a.firebaseio.com/{{$c}}" data-placement="left" title="{{__('View on firebase')}}" class="edit"><i class="feather icon-eye f-w-600 f-16 m-r-15 text-c-blue"></i></a>
+                                    {{-- <a data-key="{{$c}}" href="https://taxi-c503a.firebaseio.com/{{$c}}" data-placement="left" title="{{__('View on firebase')}}" class="edit"><i class="feather icon-eye f-w-600 f-16 m-r-15 text-c-blue"></i></a> --}}
                                     </td>
                                 @endif
                             </tr>
