@@ -31,11 +31,11 @@
                         <input type="number" step=".001" autocomplete="off" name="addCost" id="addCost" class="form-control" required="" value="{{$prices->addCost}}">
                     </div>
                     <div class="form-group form-primary">
-                        <label>{{__('غرامه الالغاء')}}</label>
+                        <label>{{__('Fine Cancellation')}}</label>
                         <input type="number" step=".001" autocomplete="off" name="riderFineAmount" id="riderFineAmount" class="form-control" required="" value="{{$prices->riderFineAmount}}">
                     </div>
                     <div class="form-group form-primary">
-                        <label>{{__('نسبه الالغاء من السائق')}}</label>
+                        <label>{{__('Driver Fine Percentage')}}</label>
                         <input type="number" step=".001" autocomplete="off" name="riderFineDriverSharePercentage" id="riderFineDriverSharePercentage" class="form-control" required="" value="{{$prices->riderFineDriverSharePercentage}}">
                     </div>
                     

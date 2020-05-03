@@ -166,6 +166,61 @@
 	"Base Fare": "الاجرة الاساسية",
 	"Deserved amount since last payout": "المبلغ المستحق منذ اخر حساب",
 	"Settings": "الاعدادات",
-	"Car Plate": "رقم اللوحة المنجمية"
+	"Car Plate": "رقم اللوحة المنجمية",
+	"Online Drivers": "السائقين المتاحين",
+	"Taxi Model": "نوع السيارة",
+	"Taxi Number": "رقم السيارة",
+	"Status": "الحالة",
+	"Longitude": "خط الطول",
+	"Latitude": "خط العرض",
+	"Show": "عرض",
+	"Search": "بحث",
+	"Previous": "السابق",
+	"Next": "القادم",
+	"Showing": "عرض",
+	"entries": "مدخلات",
+	"Wallet Balance": "رصيد المحفظة",
+	"No File Chosen": "لم يتم إختيار صورة",
+	"Travelled Distance": "المسافة",
+	"Trip Cost": "تكلفة الرحلة",
+	"Cash Payment": "المدفوع نقداً",
+	"Commissiom": "العمولة",
+	"Wait Time": "وقت الإنتظار",
+	"Other Rider Phone": "رقم الشخص الآخر",
+	"Price Setting": "إعدادات التسعيرة",
+	"All Cards": "جميع كروت الشحن",
+	"Add Cards": "إضافة كروت",
+	"Choose File": "اختار صورة",
+	"Please Fill Out This Field": "من فضلك املأ هذا الحقل",
+	"Fine Cancellation": "غرامة الإلغاء",
+	"Driver Fine Percentage": "نسبة الإلغاء للسائق"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+
+
+
+
+
+
+
+	
 
 }
